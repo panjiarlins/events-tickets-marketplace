@@ -137,7 +137,6 @@ const api = (() => {
     startAt,
     price,
     capacity,
-    currentCapacity,
   }) {
     try {
       const { data } = await axios_api.post('/products', {
@@ -154,7 +153,7 @@ const api = (() => {
         startAt,
         price,
         capacity,
-        currentCapacity,
+        currentCapacity: 0,
       });
       return { data, error: false, message: 'success' };
     } catch (error) {
@@ -163,37 +162,10 @@ const api = (() => {
     }
   }
 
-  async function editProduct({
-    productId,
-    userId,
-    title,
-    imageUrl,
-    category,
-    country,
-    provice,
-    city,
-    address,
-    description,
-    startAt,
-    price,
-    capacity,
-    currentCapacity,
-  }) {
+  async function editProduct(productId, productDetail = {}) {
     try {
       const { data } = await axios_api.patch(`/products/${productId}`, {
-        userId,
-        title,
-        imageUrl,
-        category,
-        country,
-        provice,
-        city,
-        address,
-        description,
-        startAt,
-        price,
-        capacity,
-        currentCapacity,
+        ...productDetail,
       });
       return { data, error: false, message: 'success' };
     } catch (error) {
