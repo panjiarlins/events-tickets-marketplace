@@ -4,8 +4,8 @@ import { Register } from "./pages/register";
 import { Route, Routes } from "react-router-dom";
 import { Navbar, toggleMenu } from "./pages/navbar";
 import { DetailsProduct } from "./pages/details";
-import Dashboard from "./dashboard/dashboard";
-import Redirect from "./dashboard/redirect";
+import Dashboard from "./pages/dashboard";
+import Redirect from "./pages/redirect";
 
 const App = () => {
   return (
