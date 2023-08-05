@@ -1,30 +1,25 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { asyncSetAuthUser } from "../states/authUser/action";
 
 const Login = () => {
-  const nav = useNavigate();
-  const [user, setUser] = useState({
-    password: "",
-    email: "",
-  });
+  const dispatch = useDispatch();
+  const { authUser } = useSelector((states) => states);
 
-  const InputHandler = (key, value) => {
-    setUser({ ...user, [key]: value });
-  };
+  const nav = useNavigate();
+  // const [user, setUser] = useState({
+  //   password: "",
+  //   email: "",
+  // });
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
-    nav("/login");
-  }, []);
-
-  // const login = async () => {
-  //     const auth = await api.get("/users", {
-  //       params: {
-  //         email: user.email,
-  //         password: user.password,
-  //       },
-  //     });
+    if (authUser !== null) nav("/details");
+  }, [authUser]);
 
   return (
     <div className="bg-[#131722]">
@@ -45,6 +40,8 @@ const Login = () => {
             Email <span className="text-red-500">*</span>
           </label>
           <input
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
             className="text-black font-extrabold px-2 rounded-[4px]"
             id="1"
             type="email"
@@ -55,6 +52,8 @@ const Login = () => {
             Password <span className="text-red-500">*</span>
           </label>
           <input
+            value={password}
+            onChange={({ target }) => setPassword(target.value)}
             className="text-black font-extrabold px-2 rounded-[4px]"
             type="password"
             name="password"
@@ -67,6 +66,7 @@ const Login = () => {
           </div>
 
           <button
+            onClick={() => dispatch(asyncSetAuthUser({ email, password }))}
             className="my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white"
             type="submit"
           >
