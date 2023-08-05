@@ -8,10 +8,6 @@ import { asyncSetAuthUser } from '../states/authUser/action';
 const Login = () => {
   const { authUser = null } = useSelector((states) => states);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());
@@ -19,16 +15,16 @@ const Login = () => {
 
   useEffect(() => {
     if (authUser !== null) {
-      navigate('/details');
+      nav('/details');
     }
   }, [authUser]);
 
   const nav = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
-    if (authUser !== null) nav("/details");
+    if (authUser !== null) nav('/details');
   }, [authUser]);
 
   return (
@@ -52,10 +48,10 @@ const Login = () => {
           <input
             value={email}
             onChange={({ target }) => setEmail(target.value)}
-            className="text-black font-extrabold px-2 rounded-[4px]"
-            id="1"
-            type="email"
-            name="email"
+            className='text-black font-extrabold px-2 rounded-[4px]'
+            id='1'
+            type='email'
+            name='email'
           />
 
           <label className='text-white font-semibold'>
@@ -64,9 +60,9 @@ const Login = () => {
           <input
             value={password}
             onChange={({ target }) => setPassword(target.value)}
-            className="text-black font-extrabold px-2 rounded-[4px]"
-            type="password"
-            name="password"
+            className='text-black font-extrabold px-2 rounded-[4px]'
+            type='password'
+            name='password'
           />
           <label className='font-extrabold text-[#00ABF0]'>
             Forgot Password
@@ -77,14 +73,14 @@ const Login = () => {
 
           <button
             onClick={() => dispatch(asyncSetAuthUser({ email, password }))}
-            className="my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white"
-            type="submit"
+            className='my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white'
+            type='submit'
           >
             Login
           </button>
         </div>
       </div>
-    </div>c
+    </div>
   );
 };
 
