@@ -1,15 +1,18 @@
+import React from 'react';
+
 const DetailsProduct = () => {
   return (
-    <div className="bg-[#1C212E]">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-white text-3xl font-bold mb-4">
+    <div className='bg-[#1C212E]'>
+      <div className='container mx-auto px-4 py-8'>
+        <h1 className='text-white text-3xl font-bold mb-4'>
           Stand Up Fest - The Series
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-white p-4 shadow-md rounded-lg">
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+          <div className='bg-white p-4 shadow-md rounded-lg'>
             <img
-              src="https://comika.id/wp-content/uploads/2020/01/web-banner-coupon-kemerdekaan-1.png"
-              className="w-full mb-4 object-cover"
+              src='https://comika.id/wp-content/uploads/2020/01/web-banner-coupon-kemerdekaan-1.png'
+              className='w-full mb-4 object-cover'
+              alt=''
             />
             <h1 className="text-xl font-[800]">Rp. 100.000,-</h1>
             <h2 className="text-black font-bold">
@@ -23,12 +26,12 @@ const DetailsProduct = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#131722]">
-        <div className="text-[#00BAEF] font-extrabold container mx-auto px-4 py-8">
+      <div className='bg-[#131722]'>
+        <div className='text-[#00BAEF] font-extrabold container mx-auto px-4 py-8'>
           Description
         </div>
         <hr />
-        <p className="py-4 px-4 text-[#939CB0] font-extrabold">
+        <p className='py-4 px-4 text-[#939CB0] font-extrabold'>
           Stand Up Fest "The Series" persembahan Indonesia Media yang
           menampilkan Komika ternama Popon Kerok, Ate, Yono Bakrie, Soleh
           Solihun dan Mongol Stres di Gedung Menara Kuningan Jakarta. Hadir
