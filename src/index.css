@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Merriweather+Sans:wght@500;600&family=Outfit&family=Poppins:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Merriweather+Sans:wght@500;600&family=Outfit:wght@400;600;700;800&family=Poppins:wght@100&display=swap");
 
 * {
   box-sizing: border-box;

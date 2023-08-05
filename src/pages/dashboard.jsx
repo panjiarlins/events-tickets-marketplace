@@ -1,10 +1,9 @@
 import './dashboard.css';
-import  { FaHeart } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
 import { PiHandbagSimpleFill } from 'react-icons/pi';
 import { IconContext } from 'react-icons';
 
 const Dashboard = () => {
-
     return(
         <>
         <div>
