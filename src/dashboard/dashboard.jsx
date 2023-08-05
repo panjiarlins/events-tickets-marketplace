@@ -7,7 +7,6 @@ const Dashboard = () => {
 
     return(
         <>
-        <div className='nav'></div>
         <div>
             <img src="https://comika.id/wp-content/uploads/2020/01/web-banner-coupon-kemerdekaan-1.png" alt="" />
         </div>
@@ -18,8 +17,10 @@ const Dashboard = () => {
             <div className='grid3'>
                 <div className='grid2'><img src="https://comika.id/wp-content/uploads/2023/07/stand-up-fest-the-series-cover-300x300.png" alt="" /></div>
                 <div><p>Rp 100.000,00</p></div>
-                <div><p>Stand-Fest"The Series</p></div>
-                <div className='bg-blue-500 py-2 rounded-lg text-white text-center cursor-pointer'>Buy</div>
+                <div className='truncate text-white'>Stand-Fest"The Series</div>
+                <div>
+                    <a href="details"><div className='bg-blue-500 py-2 rounded-lg text-white text-center cursor-pointer'>Buy</div></a>
+                </div>
             </div>
             <div className='grid3'>
                 <div className='grid2'><img src="https://comika.id/wp-content/uploads/2023/07/ICUS-Dibalik-SUCI-Cover-300x300.png" alt="" /></div>
@@ -100,7 +101,7 @@ const Dashboard = () => {
             <div className='grid3'>
                 <div className='grid2'><img src="https://comika.id/wp-content/uploads/2023/07/stand-up-fest-the-series-cover-300x300.png" alt="" /></div>
                 <div><p>Rp 100.000,00</p></div>
-                <div><p>Stand-Fest"The Series</p></div>
+                <div className='truncate text-white'>Stand-Fest"The Series</div>
                 <div className='bg-blue-500 py-2 rounded-lg text-white text-center cursor-pointer'>Buy</div>
             </div>
             <div className='grid3'>
@@ -112,7 +113,7 @@ const Dashboard = () => {
             <div className='grid3'>
                 <div className='grid2'><img src="https://comika.id/wp-content/uploads/2023/06/Antara-Ada-Dan-Tiada-Cover-2-300x300.png" alt="" /></div>
                 <div><p>Rp 50.000,00</p></div>
-                <div><p>Antara Ada dan Tiada</p></div>
+                <div className='truncate text-white'>Antara Ada dan Tiada</div>
                 <div className='bg-blue-500 py-2 rounded-lg text-white text-center cursor-pointer'>Buy</div>
             </div>
             <div className='grid3'>
@@ -206,7 +207,7 @@ const Dashboard = () => {
             <div className='grid3'>
             <div className='grid2'><img src="https://comika.id/wp-content/uploads/2023/07/stand-up-fest-the-series-cover-300x300.png" alt="" /></div>
                 <div><p>Rp 100.000,00</p></div>
-                <div><p>Stand-Fest"The Series</p></div>
+                <div className='truncate text-white'>Stand-Fest"The Series</div>
                 <div className='bg-blue-500 py-2 rounded-lg text-white text-center cursor-pointer'>Buy</div>
             </div>
             <div className='grid3'>
