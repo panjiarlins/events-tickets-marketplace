@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "id": "user-1691224603295",
-      "fullName": "Test",
-      "email": "test100@test.com",
-      "password": "1234",
-      "referralCode": "REF-test100@test.com"
+      "id": "user-1691225983095",
+      "fullName": "asd",
+      "email": "asd",
+      "password": "asd",
+      "referralCode": "REF-asd"
     }
   ],
   "products": [],

@@ -7,6 +7,9 @@ import { DetailsProduct } from './pages/details';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
+import { NavMobile } from "./pages/navmobile";
+import { useSelector } from "react-redux";
+
 
 const App = () => {
   const { authUser = null, isPreload = false } = useSelector(
@@ -25,9 +28,10 @@ const App = () => {
   if (isPreload === null) {
     return null;
   }
-
+  
   return (
     <>
+      {/* <NavMobile /> */}
       <Navbar />
       <Routes>
         <Route path='/register' element={<Register />} />

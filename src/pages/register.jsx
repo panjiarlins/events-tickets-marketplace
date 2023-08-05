@@ -1,17 +1,15 @@
-// import "./css/login.css";
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { asyncRegisterUser } from '../states/users/action';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { asyncRegisterUser } from "../states/users/action";
 
 const Register = () => {
   const dispatch = useDispatch();
   const nav = useNavigate();
-
-  const [email, setEmail] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <div className='bg-[#131722]'>
@@ -33,25 +31,22 @@ const Register = () => {
           </label>
           <input
             value={email}
-            onChange={({ target }) => {
-              setEmail(target.value);
-              console.log(email);
-            }}
-            className='text-black font-extrabold px-2 rounded-[4px]'
-            id='1'
-            type='email'
-            name='email'
+            onChange={({ target }) => setEmail(target.value)}
+            className="text-black font-extrabold px-2 rounded-[4px]"
+            id="1"
+            type="email"
+            name="email"
           />
-
+              
           <label className='text-white font-semibold'>
             Fullname <span className='text-red-500'>*</span>
           </label>
           <input
             value={fullName}
             onChange={({ target }) => setFullName(target.value)}
-            className='text-black font-extrabold px-2 rounded-[4px]'
-            type='text'
-            name='fullname'
+            className="text-black font-extrabold px-2 rounded-[4px]"
+            type="text"
+            name="fullname"
           />
 
           <label className='text-white font-semibold'>
@@ -60,9 +55,9 @@ const Register = () => {
           <input
             value={password}
             onChange={({ target }) => setPassword(target.value)}
-            className='text-black font-extrabold px-2 rounded-[4px]'
-            type='password'
-            name='password'
+            className="text-black font-extrabold px-2 rounded-[4px]"
+            type="password"
+            name="password"
           />
 
           <label className='text-white font-semibold'>
@@ -71,9 +66,9 @@ const Register = () => {
           <input
             value={confirmPassword}
             onChange={({ target }) => setConfirmPassword(target.value)}
-            className='text-black font-extrabold px-2 rounded-[4px]'
-            type='password'
-            name='password'
+            className="text-black font-extrabold px-2 rounded-[4px]"
+            type="password"
+            name="password"
           />
 
           <label className='text-white font-semibold'>
@@ -85,16 +80,10 @@ const Register = () => {
             name='referral'
           />
           <button
-            className='my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white'
-            type='submit'
+            className="my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white"
+            type="submit"
             onClick={() =>
-              dispatch(
-                asyncRegisterUser({
-                  email,
-                  fullName,
-                  password,
-                })
-              )
+              dispatch(asyncRegisterUser({ fullName, email, password }))
             }
           >
             Register

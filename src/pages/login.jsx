@@ -24,26 +24,12 @@ const Login = () => {
   }, [authUser]);
 
   const nav = useNavigate();
-  const [user, setUser] = useState({
-    password: '',
-    email: '',
-  });
-
-  const InputHandler = (key, value) => {
-    setUser({ ...user, [key]: value });
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
-    nav('/login');
-  }, []);
-
-  // const login = async () => {
-  //     const auth = await api.get("/users", {
-  //       params: {
-  //         email: user.email,
-  //         password: user.password,
-  //       },
-  //     });
+    if (authUser !== null) nav("/details");
+  }, [authUser]);
 
   return (
     <div className='bg-[#131722]'>
@@ -66,10 +52,10 @@ const Login = () => {
           <input
             value={email}
             onChange={({ target }) => setEmail(target.value)}
-            className='text-black font-extrabold px-2 rounded-[4px]'
-            id='1'
-            type='email'
-            name='email'
+            className="text-black font-extrabold px-2 rounded-[4px]"
+            id="1"
+            type="email"
+            name="email"
           />
 
           <label className='text-white font-semibold'>
@@ -78,9 +64,9 @@ const Login = () => {
           <input
             value={password}
             onChange={({ target }) => setPassword(target.value)}
-            className='text-black font-extrabold px-2 rounded-[4px]'
-            type='password'
-            name='password'
+            className="text-black font-extrabold px-2 rounded-[4px]"
+            type="password"
+            name="password"
           />
           <label className='font-extrabold text-[#00ABF0]'>
             Forgot Password
@@ -91,14 +77,14 @@ const Login = () => {
 
           <button
             onClick={() => dispatch(asyncSetAuthUser({ email, password }))}
-            className='my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white'
-            type='submit'
+            className="my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white"
+            type="submit"
           >
             Login
           </button>
         </div>
       </div>
-    </div>
+    </div>c
   );
 };
 
