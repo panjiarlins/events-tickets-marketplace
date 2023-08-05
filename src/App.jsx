@@ -9,6 +9,7 @@ import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
 import { NavMobile } from './pages/navmobile';
 import Dashboard from './pages/dashboard';
+import Redirect from "./pages/redirect";
 
 const App = () => {
   const { authUser = null, isPreload = false } = useSelector(
@@ -33,10 +34,11 @@ const App = () => {
       {/* <NavMobile /> */}
       <Navbar />
       <Routes>
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/details' element={<DetailsProduct />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/details" element={<DetailsProduct />} />
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="*" element={<Redirect />}></Route>
       </Routes>
     </>
   );
