@@ -16,6 +16,7 @@ function productsReducer(products = [], action = {}) {
             ...action.payload.product,
           };
         }
+        return product;
       });
 
     case ActionType.DELETE_PRODUCT:
