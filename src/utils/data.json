@@ -6,6 +6,20 @@
       "email": "asd",
       "password": "asd",
       "referralCode": "REF-asd"
+    },
+    {
+      "id": "user-1691238932690",
+      "fullName": "sad",
+      "email": "sad",
+      "password": "sad",
+      "referralCode": "REF-sad"
+    },
+    {
+      "id": "user-1691238967892",
+      "fullName": "qwerty",
+      "email": "qwerty",
+      "password": "qwerty",
+      "referralCode": "REF-qwerty"
     }
   ],
   "products": [],
