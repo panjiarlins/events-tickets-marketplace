@@ -4,7 +4,6 @@ import { Register } from "./pages/register";
 import { Route, Routes } from "react-router-dom";
 import { Navbar, toggleMenu } from "./pages/navbar";
 import { DetailsProduct } from "./pages/details";
-
 const App = () => {
   return (
     <>
