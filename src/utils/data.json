@@ -1,7 +1,7 @@
 {
-  "user": [],
-  "product": [],
-  "order": [],
-  "referral_log": [],
-  "promotion": []
+  "users": [],
+  "products": [],
+  "orders": [],
+  "referral_logs": [],
+  "promotions": []
 }
