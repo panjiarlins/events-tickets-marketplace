@@ -29,47 +29,40 @@ const Login = () => {
         <div className=" text-center mx-auto grid grid-cols-2 justify-center">
           <div
             onClick={() => nav("/register")}
-            className="cursor-pointer py-4 font-bold w-[100%] mx-auto text-slate-400 border border-transparent border-b-slate-400"
+            className="cursor-pointer py-4 font-sans w-[100%] mx-auto text-slate-400 border border-transparent border-b-slate-400"
           >
             Register
           </div>
-          <div className="cursor-pointer py-4 font-extrabold w-[100%] mx-auto text-[#00ABF0] border border-transparent border-b-[#00ABF0]">
+          <div className="cursor-pointer py-4 font-sans font-bold w-[100%] mx-auto text-[#00ABF0] border border-transparent border-b-[#00ABF0]">
             Login
           </div>
         </div>
         <div className="mt-4 grid gap-[6px] grid-cols-1">
-          <label htmlFor="1" className="text-white font-semibold">
+          <label htmlFor="1" className="text-white font-sans">
             Email <span className="text-red-500">*</span>
           </label>
           <input
             value={email}
             onChange={({ target }) => setEmail(target.value)}
-            className="text-black font-extrabold px-2 rounded-[4px]"
+            className="text-black font-sans px-2 rounded-[4px]"
             id="1"
             type="email"
             name="email"
           />
 
-          <label className="text-white font-semibold">
+          <label className="text-white font-sans">
             Password <span className="text-red-500">*</span>
           </label>
           <input
             value={password}
             onChange={({ target }) => setPassword(target.value)}
-            className="text-black font-extrabold px-2 rounded-[4px]"
+            className="text-black font-sans px-2 rounded-[4px]"
             type="password"
             name="password"
           />
-          <label className="font-extrabold text-[#00ABF0]">
-            Forgot Password
-          </label>
-          <div className="text-white font-extrabold">
-            <input type="checkbox" /> I want to stay logged in
-          </div>
-
           <button
             onClick={() => dispatch(asyncSetAuthUser({ email, password }))}
-            className="my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white"
+            className="my-2 bg-[#00ABF0] font-sans font-bold rounded-[4px] py-1 cursor-pointer text-white"
             type="submit"
           >
             Login
