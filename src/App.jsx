@@ -9,7 +9,7 @@ import { asyncPreloadProcess } from "./states/isPreload/action";
 import { asyncUnsetAuthUser } from "./states/authUser/action";
 import { NavMobile } from "./pages/navmobile";
 import Dashboard from "./pages/dashboard";
-import { DetailsProduct } from "./pages/details";
+import { DetailsProduct } from "./pages/detailevent";
 
 
 const App = () => {
