@@ -2,13 +2,12 @@ import React, { useEffect } from 'react';
 import { Login } from './pages/login';
 import { Register } from './pages/register';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Navbar } from './pages/navbar';
 import { DetailsProduct } from './pages/details';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
-import { NavMobile } from './pages/navmobile';
 import DashboardPage from './pages/DashboardPage';
+import { Navbar } from './components/Navbar';
 
 const App = () => {
   const { authUser = null, isPreload = false } = useSelector(
@@ -30,14 +29,13 @@ const App = () => {
 
   return (
     <>
-      {/* <NavMobile /> */}
       <Navbar />
       <Routes>
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/details' element={<DetailsProduct />} />
         <Route path='/dashboard' element={<DashboardPage />} />
-        <Route path='*' element={<Navigate to={'/login'} />}></Route>
+        <Route path='*' element={<Navigate to={'/dashboard'} />} />
       </Routes>
     </>
   );
