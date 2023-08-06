@@ -3,8 +3,14 @@ import { useNavigate } from 'react-router';
 import { IconContext } from 'react-icons';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { FaUserCircle } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { isCreateEventButtonCloseOnClickActionCreator } from '../states/isCreateEventButtonCloseOnClick/action';
 
-const Navbar = () => {
+const Navbar = (onClickButtonClose) => {
+  const { isCreateEventButtonCloseOnClick = false } = useSelector(
+    (states) => states
+  );
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isHumbergerMenuOnClick, setIsHumbergerMenuOnClick] = useState(false);
 
@@ -21,7 +27,7 @@ const Navbar = () => {
       <IconContext.Provider value={{ color: '#24BAEF', size: '50%' }}>
         <FaUserCircle
           className='cursor-pointer'
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/login')}
         />
       </IconContext.Provider>
       <IconContext.Provider value={{ color: '#86878B', size: '7vw' }}>
@@ -40,11 +46,17 @@ const Navbar = () => {
         <button className='text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]'>
           Semua Event
         </button>
-        <button className='text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]'>
+        <button
+          onClick={() =>
+            dispatch(
+              isCreateEventButtonCloseOnClickActionCreator(
+                !isCreateEventButtonCloseOnClick
+              )
+            )
+          }
+          className='text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]'
+        >
           Buat Event
-        </button>
-        <button className='text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]'>
-          Edit Event
         </button>
         <input
           className='rounded-full font-bold text-black text-[3.5vw] md:text-[0.8em] mx-[5vw] md:mx-0 px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem] md:flex-1'
