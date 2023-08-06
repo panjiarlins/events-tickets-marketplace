@@ -20,6 +20,20 @@
       "email": "qwerty",
       "password": "qwerty",
       "referralCode": "REF-qwerty"
+    },
+    {
+      "id": "user-1691239418812",
+      "fullName": "jordi",
+      "email": "jordi@mail.com",
+      "password": "jordi",
+      "referralCode": "REF-jordi@mail.com"
+    },
+    {
+      "id": "user-1691329830281",
+      "fullName": "andi",
+      "email": "andi@mail.com",
+      "password": "andi",
+      "referralCode": "REF-andi@mail.com"
     }
   ],
   "products": [],

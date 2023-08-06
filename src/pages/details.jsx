@@ -1,37 +1,108 @@
-import React from 'react';
+import React, { useState } from "react";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Input,
+  Center,
+} from "@chakra-ui/react";
 
 const DetailsProduct = () => {
-  return (
-    <div className='bg-[#1C212E]'>
-      <div className='container mx-auto px-4 py-8'>
-        <h1 className='text-white text-3xl font-bold mb-4'>
-          Stand Up Fest - The Series
-        </h1>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-          <div className='bg-white p-4 shadow-md rounded-lg'>
-            <img
-              src='https://comika.id/wp-content/uploads/2020/01/web-banner-coupon-kemerdekaan-1.png'
-              className='w-full mb-4 object-cover'
-              alt=''
-            />
-            <h1 className="text-xl font-[800]">Rp. 100.000,-</h1>
-            <h2 className="text-black font-bold">
-              Bekasi, Jawa Barat, Indonesia
-            </h2>
-            <h2 className="text-black font-bold">17 Agustus 2023</h2>
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-            <button className="bg-[#00ABF0] text-white cursor-pointer py-1 px-4 font-extrabold  border-transparent rounded-md">
-              Buy
-            </button>
-          </div>
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <div className="bg-[#1C212E] container mx-auto px-4 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-black p-4 shadow-md rounded-lg">
+          <img
+            src="https://comika.id/wp-content/uploads/2023/07/stand-up-fest-the-series-cover-300x300.png"
+            className="w-full mb-4 object-cover"
+            alt=""
+          />
+        </div>
+        <div className=" p-4 shadow-md rounded-lg mx-auto">
+          <h1 className="text-white text-2xl font-sans mb-4">
+            Stand Up Fest - The Series
+          </h1>
+          <h2 className="text-orange-500 text-2xl font-sans font-bold">
+            Rp 100.000,00
+          </h2>
+          <button
+            onClick={handleOpenModal}
+            className=" mt-4 bg-[#00ABF0] text-white font-sans cursor-pointer py-1 px-4 font-bold  border-transparent rounded-md"
+          >
+            Buy
+          </button>
         </div>
       </div>
-      <div className='bg-[#131722]'>
-        <div className='text-[#00BAEF] font-extrabold container mx-auto px-4 py-8'>
+
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        <ModalOverlay />
+        <ModalContent className="mx-[300px] my-[110px] rounded-xl bg-white">
+          <ModalHeader className="font-sans mx-auto font-bold py-2">
+            Payment Event
+          </ModalHeader>
+          <ModalCloseButton className="py-4 text-red-500" />
+          <ModalBody className="">
+            <Center flexDir="column" gap={"15px"}>
+              <img className="" src="" alt="isi dengan gambar"></img>
+              <Input
+                className="bg-slate-300 font-sans rounded-md px-3 max-w-[300px]"
+                placeholder="Event Name"
+                required
+                type="url"
+              ></Input>
+              <Input
+                className="bg-slate-300 font-sans rounded-md px-3 max-w-[300px]"
+                id="name"
+                placeholder="Location"
+                required
+              ></Input>
+              <Input
+                className="bg-slate-300 font-sans rounded-md px-3 max-w-[300px]"
+                placeholder="Price"
+                required
+              ></Input>
+            </Center>
+          </ModalBody>
+
+          <ModalFooter className="mx-auto py-6 gap-5">
+            <Button
+              type="submit"
+              className="bg-blue-600 px-2 rounded-md py-1 font-sans text-white"
+            >
+              Submit
+            </Button>
+
+            <Button
+              type="button"
+              className="bg-red-600 font-sans px-2 py-1 rounded-md text-white"
+            >
+              Delete
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      <div className="bg-[#131722]">
+        <div className="text-[#00BAEF] font-extrabold container mx-auto px-4 py-8">
           Description
         </div>
         <hr />
-        <p className='py-4 px-4 text-[#939CB0] font-extrabold'>
+        <p className="py-4 px-4 text-[#939CB0] font-extrabold">
           Stand Up Fest "The Series" persembahan Indonesia Media yang
           menampilkan Komika ternama Popon Kerok, Ate, Yono Bakrie, Soleh
           Solihun dan Mongol Stres di Gedung Menara Kuningan Jakarta. Hadir
