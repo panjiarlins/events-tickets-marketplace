@@ -2,20 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@700&family=Merriweather+Sans:wght@500;600&family=Outfit:wght@400;600;700;800&family=Poppins:wght@100&display=swap");
-
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: #0c0317;
+  color: white;
+  background-color: #0c0e17;
   max-width: 1280px;
   margin: 0 auto;
-  font-family: "Cherry Swash", cursive;
-  font-family: "Merriweather Sans", sans-serif;
-  font-family: "Outfit", sans-serif;
-  font-family: "Poppins", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-container {
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+.dashboard-jumbotron {
+  position: absolute;
+  left: 0;
+}
+
+.dashboard-jumbotron > img {
+  width: 100vw;
+  aspect-ratio: 10 / 3.5;
+  object-fit: cover;
+}
+
+.dashboard-content {
+  padding-top: 45vw;
+}
+
+.dashboard-content_title {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.dashboard-content_title_text {
+  font-size: 4vw;
+  font-weight: 600;
+}
+
+.dashboard-content_title_line {
+  grid-column: 2 / 3;
+  width: 100%;
+  height: 6%;
+  background-color: #394253;
+  align-self: center;
+}
+
+.dashboard-content_cards {
+  padding-top: 10vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10vw, 40vw));
+  justify-content: space-between;
+  row-gap: 10vw;
+}
+
+.dashboard-content_cards_card {
+  width: 100%;
+  aspect-ratio: 4 / 6;
+  display: grid;
+  grid-template-rows: 60% 10% 10% 10% 10%;
+  align-items: center;
+}
+
+.dashboard-content_cards_card_image {
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-content_cards_card_image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: white;
+}
+
+.dashboard-content_cards_card_price {
+  color: #6091b0;
+  font-size: 2.5vw;
+  font-weight: 600;
+  align-self: end;
+}
+
+.dashboard-content_cards_card_location {
+  color: #6091b0;
+  font-size: 2.5vw;
+  font-weight: 600;
+}
+
+.dashboard-content_cards_card_title {
+  color: white;
+  font-size: 2.5vw;
+  font-weight: 600;
+  align-self: start;
+}
+
+.dashboard-content_cards_card_buttonDetail {
+  color: white;
+  font-size: 3vw;
+  font-weight: bold;
+  background-color: #24baef;
+  border-radius: 1vw;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width: 640px) {
 }
