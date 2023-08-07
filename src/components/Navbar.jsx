@@ -52,14 +52,20 @@ const Navbar = () => {
         }
       >
         {isHumbergerMenuOnClick}
-        <button className='text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]'>
+        <button
+          onClick={() => navigate('/dashboard')}
+          className='text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]'
+        >
           Semua Event
         </button>
         <button
           onClick={() =>
             dispatch(isCreateProductButtonCloseOnClickActionCreator())
           }
-          className='text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]'
+          className={
+            'text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]' +
+            (authUser ? ' block' : ' hidden')
+          }
         >
           Buat Event
         </button>

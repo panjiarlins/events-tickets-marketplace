@@ -14,13 +14,13 @@ const DetailsProduct = () => {
               className='w-full mb-4 object-cover'
               alt=''
             />
-            <h1 className="text-xl font-[800]">Rp. 100.000,-</h1>
-            <h2 className="text-black font-bold">
+            <h1 className='text-xl font-[800]'>Rp. 100.000,-</h1>
+            <h2 className='text-black font-bold'>
               Bekasi, Jawa Barat, Indonesia
             </h2>
-            <h2 className="text-black font-bold">17 Agustus 2023</h2>
+            <h2 className='text-black font-bold'>17 Agustus 2023</h2>
 
-            <button className="bg-[#00ABF0] text-white cursor-pointer py-1 px-4 font-extrabold  border-transparent rounded-md">
+            <button className='bg-[#00ABF0] text-white cursor-pointer py-1 px-4 font-extrabold  border-transparent rounded-md'>
               Buy
             </button>
           </div>

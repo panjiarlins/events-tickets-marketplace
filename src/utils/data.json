@@ -8,7 +8,64 @@
       "referralCode": "REF-test"
     }
   ],
-  "products": [],
+  "products": [
+    {
+      "id": "product-1691377468219",
+      "title": "Stand-Up Fest \"The Series\"",
+      "imageUrl": "https://comika.id/wp-content/uploads/2023/07/stand-up-fest-the-series-cover-300x300.png",
+      "country": "Indonesia",
+      "province": "Jawa Barat",
+      "city": "Bekasi",
+      "address": "Gedung serbaguna No.1",
+      "description": "QWERTYUIOP\nqwertyuiop\nqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqwerty sgs so hs usih soihrpzomjr goieafmef aifhoa LHfoeaihfjJOie fhjr ffrioafnsrif aef  dalEf oafaeoiuf  paoehf e faeo  APAIEIFEA  APAEIF A FOEI rosjgioejfw ojierfsfeap efjaijf apefejijspgrijvvdinij",
+      "startAt": "2023-08-30T10:00",
+      "price": "100000",
+      "capacity": "1000",
+      "currentCapacity": 0
+    },
+    {
+      "id": "product-1691378516912",
+      "title": "ICUS (DIbalik SUCI)",
+      "imageUrl": "https://comika.id/wp-content/uploads/2023/07/ICUS-Dibalik-SUCI-Cover-300x300.png",
+      "country": "Indonesia",
+      "province": "Jakarta",
+      "city": "Jakarta Selatan",
+      "address": "Jl. Sudirman",
+      "description": "Stand-up comedy show bertajuk ICUS (Dibalik SUCI) oleh Gautama Shindu, Bonar, Irfan Elsiami, Muhammad Dwik, Ilham Setyadi akan menyuguhkan cerita dibalik layar kompetisi stand-up comedy terbesar di Indonesia. Drama, konflik dan cerita kocak yang tidak terekam oleh kamera oleh teman-teman alumni SUCI X. Mulai dari bongkar kisah Komika sombong yang mikir dirinya setara Pandji Pragiwaksono, kisah saat sekamar dengan para Komika saat dikarantina, ada penampilan lagu spesial buatan Ilham Setyadi juga, hingga momen Gautama minta maaf ke Ernest Prakasa. Penasaran keseruan video digital-nya? Langsung checkout sekarang juga!\nPERHATIAN\nSize : 515 MB\nDurasi ICUS (Dibalik SUCI) : 02:00:51\nResolusi Video : HD 1280X720\nSegera lakukan download karena link akan otomatis expired dalam waktu 7 hari",
+      "startAt": "2023-08-28T14:00",
+      "price": "50000",
+      "capacity": "100",
+      "currentCapacity": 0
+    },
+    {
+      "id": "product-1691378598595",
+      "title": "ICUS (DIbalik SUCI)",
+      "imageUrl": "https://comika.id/wp-content/uploads/2023/07/ICUS-Dibalik-SUCI-Cover-300x300.png",
+      "country": "Indonesia",
+      "province": "Jakarta",
+      "city": "Jakarta Selatan",
+      "address": "Jl. Sudirman",
+      "description": "Stand-up comedy show bertajuk ICUS (Dibalik SUCI) oleh Gautama Shindu, Bonar, Irfan Elsiami, Muhammad Dwik, Ilham Setyadi akan menyuguhkan cerita dibalik layar kompetisi stand-up comedy terbesar di Indonesia. Drama, konflik dan cerita kocak yang tidak terekam oleh kamera oleh teman-teman alumni SUCI X. Mulai dari bongkar kisah Komika sombong yang mikir dirinya setara Pandji Pragiwaksono, kisah saat sekamar dengan para Komika saat dikarantina, ada penampilan lagu spesial buatan Ilham Setyadi juga, hingga momen Gautama minta maaf ke Ernest Prakasa. Penasaran keseruan video digital-nya? Langsung checkout sekarang juga!\nPERHATIAN\nSize : 515 MB\nDurasi ICUS (Dibalik SUCI) : 02:00:51\nResolusi Video : HD 1280X720\nSegera lakukan download karena link akan otomatis expired dalam waktu 7 hari",
+      "startAt": "2023-08-28T14:00",
+      "price": "50000",
+      "capacity": "100",
+      "currentCapacity": 0
+    },
+    {
+      "id": "product-1691378636719",
+      "title": "ICUS (DIbalik SUCI)",
+      "imageUrl": "https://comika.id/wp-content/uploads/2023/07/ICUS-Dibalik-SUCI-Cover-300x300.png",
+      "country": "Indonesia",
+      "province": "Jakarta",
+      "city": "Jakarta Selatan",
+      "address": "Jl. Sudirman",
+      "description": "Stand-up comedy show bertajuk ICUS (Dibalik SUCI) oleh Gautama Shindu, Bonar, Irfan Elsiami, Muhammad Dwik, Ilham Setyadi akan menyuguhkan cerita dibalik layar kompetisi stand-up comedy terbesar di Indonesia. Drama, konflik dan cerita kocak yang tidak terekam oleh kamera oleh teman-teman alumni SUCI X. Mulai dari bongkar kisah Komika sombong yang mikir dirinya setara Pandji Pragiwaksono, kisah saat sekamar dengan para Komika saat dikarantina, ada penampilan lagu spesial buatan Ilham Setyadi juga, hingga momen Gautama minta maaf ke Ernest Prakasa. Penasaran keseruan video digital-nya? Langsung checkout sekarang juga!\nPERHATIAN\nSize : 515 MB\nDurasi ICUS (Dibalik SUCI) : 02:00:51\nResolusi Video : HD 1280X720\nSegera lakukan download karena link akan otomatis expired dalam waktu 7 hari",
+      "startAt": "2023-08-28T14:00",
+      "price": "50000",
+      "capacity": "100",
+      "currentCapacity": 0
+    }
+  ],
   "orders": [],
   "referral_logs": [],
   "promotions": []

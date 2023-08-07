@@ -1,7 +1,12 @@
 import React from 'react';
 import CreateProductInput from '../components/CreateProductInput';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardPage = () => {
+  const { products = [] } = useSelector((states) => states);
+  const navigate = useNavigate();
+
   return (
     <>
       <CreateProductInput />
@@ -14,28 +19,28 @@ const DashboardPage = () => {
         </div>
         <div className='dashboard-content'>
           <div className='dashboard-content_title'>
-            <p className='dashboard-content_title_text'>New Release</p>
+            <p className='dashboard-content_title_text'>All Events</p>
             <div className='dashboard-content_title_line'></div>
           </div>
           <div className='dashboard-content_cards'>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => (
-              <div className='dashboard-content_cards_card'>
+            {products.map((product) => (
+              <div key={product.id} className='dashboard-content_cards_card'>
                 <div className='dashboard-content_cards_card_image'>
-                  <img
-                    src='https://comika.id/wp-content/uploads/2023/07/stand-up-fest-the-series-cover-300x300.png'
-                    alt=''
-                  />
+                  <img src={product.imageUrl} alt={product.title} />
                 </div>
                 <div className='truncate dashboard-content_cards_card_price'>
-                  Rp 100.000,00
+                  Rp {product.price}
                 </div>
                 <div className='truncate dashboard-content_cards_card_location'>
-                  Bekasi, Jawa Barat, Indonesia
+                  {product.city}, {product.province}, {product.country}
                 </div>
                 <div className='truncate dashboard-content_cards_card_title'>
-                  Stand-Fest"The Series
+                  {product.title}
                 </div>
-                <button className='truncate dashboard-content_cards_card_buttonDetail'>
+                <button
+                  onClick={() => navigate(`/products/${product.id}`)}
+                  className='truncate dashboard-content_cards_card_buttonDetail'
+                >
                   LIHAT DETAIL
                 </button>
               </div>

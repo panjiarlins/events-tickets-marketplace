@@ -19,21 +19,30 @@ const App = () => {
     dispatch(asyncPreloadProcess());
   }, [dispatch]);
 
-  const onSignOut = () => {
-    dispatch(asyncUnsetAuthUser());
-  };
-
   if (isPreload === null) {
     return null;
+  }
+
+  if (authUser === null) {
+    return (
+      <>
+        <Navbar />
+        <Routes>
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/details/:productId' element={<DetailsProduct />} />
+          <Route path='/dashboard' element={<DashboardPage />} />
+          <Route path='*' element={<Navigate to={'/dashboard'} />} />
+        </Routes>
+      </>
+    );
   }
 
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/details' element={<DetailsProduct />} />
+        <Route path='/details/:productId' element={<DetailsProduct />} />
         <Route path='/dashboard' element={<DashboardPage />} />
         <Route path='*' element={<Navigate to={'/dashboard'} />} />
       </Routes>

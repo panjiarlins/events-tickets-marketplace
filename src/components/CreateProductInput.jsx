@@ -3,11 +3,11 @@ import { IconContext } from 'react-icons';
 import { IoCloseCircle } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { isCreateProductButtonCloseOnClickActionCreator } from '../states/isCreateProductButtonCloseOnClick/action';
+import { asyncCreateProduct } from '../states/products/action';
 
 const CreateProductInput = () => {
-  const { isCreateProductButtonCloseOnClick = true } = useSelector(
-    (states) => states
-  );
+  const { authUser = null, isCreateProductButtonCloseOnClick = true } =
+    useSelector((states) => states);
   const dispatch = useDispatch();
 
   const createProductData = {
@@ -23,7 +23,7 @@ const CreateProductInput = () => {
     description: 'Description',
   };
 
-  const [createProductInput, setCreateProductInput] = useState({
+  const defaultInputValue = {
     title: '',
     imageUrl: '',
     country: '',
@@ -34,6 +34,10 @@ const CreateProductInput = () => {
     capacity: '',
     startAt: '',
     description: '',
+  };
+
+  const [createProductInput, setCreateProductInput] = useState({
+    ...defaultInputValue,
   });
 
   const createProductInputHandler = (key, value) => {
@@ -89,7 +93,7 @@ const CreateProductInput = () => {
                 className='h-[10rem] text-slate-700 font-medium rounded-xl py-[0.5vw] md:py-[0.5rem] px-[4vw] md:px-[2rem] text-[2.5vw] md:text-[1em]'
               />
             );
-          } else if (key === 'capacity') {
+          } else if (key === 'capacity' || key === 'price') {
             return (
               <input
                 value={createProductInput[key]}
@@ -99,7 +103,6 @@ const CreateProductInput = () => {
                 placeholder={value}
                 type='number'
                 min='0'
-                max='100000'
                 className='text-slate-700 font-medium rounded-full py-[0.5vw] md:py-[0.5rem] px-[4vw] md:px-[2rem] text-[2.5vw] md:text-[1em]'
               />
             );
@@ -117,7 +120,22 @@ const CreateProductInput = () => {
             />
           );
         })}
-        <button className='text-white bg-[#24BAEF] font-medium rounded-full mt-[4vw] md:mt-[2rem] py-[0.5vw] md:py-[0.5rem] px-[4vw] md:px-[2rem] text-[2.5vw] md:text-[1em]'>
+        <button
+          type='submit'
+          onClick={() => {
+            dispatch(
+              asyncCreateProduct({
+                authUser: authUser.id,
+                ...createProductInput,
+              })
+            );
+            //////////////////////////////////////////////////////////////////
+            setCreateProductInput({ ...defaultInputValue });
+            dispatch(isCreateProductButtonCloseOnClickActionCreator());
+            //////////////////////////////////////////////////////////////////
+          }}
+          className='text-white bg-[#24BAEF] font-medium rounded-full mt-[4vw] md:mt-[2rem] py-[0.5vw] md:py-[0.5rem] px-[4vw] md:px-[2rem] text-[2.5vw] md:text-[1em]'
+        >
           Submit
         </button>
       </div>
