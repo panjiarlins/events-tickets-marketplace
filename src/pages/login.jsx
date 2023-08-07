@@ -17,7 +17,6 @@ const Login = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log('ok', authUser);
     if (authUser !== null) {
       navigate('/dashboard');
     }
@@ -69,7 +68,16 @@ const Login = () => {
 
           <button
             onClick={() => {
-              dispatch(asyncSetAuthUser({ email, password }));
+              dispatch(asyncSetAuthUser({ email, password })).then(
+                ({ error, message }) => {
+                  if (error) {
+                    console.log(message);
+                    alert(message);
+                  } else {
+                    navigate('/dashboard');
+                  }
+                }
+              );
             }}
             className='my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white'
             type='submit'

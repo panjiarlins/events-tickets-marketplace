@@ -23,11 +23,17 @@ function unsetAuthUserActionCreator() {
 function asyncSetAuthUser({ email, password }) {
   return async (dispatch) => {
     try {
-      const { data } = await api.login({ email, password });
-      api.putAuthUserLocalStorage(data);
+      const response = await api.login({ email, password });
 
-      const { data: authUser } = await api.getOwnProfile();
+      if (response.error) {
+        return response;
+      }
+
+      api.putAuthUserLocalStorage(response.data);
+      const { data: authUser, error, message } = await api.getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
+
+      return { data: authUser, error, message };
     } catch (error) {
       console.log(error);
     }

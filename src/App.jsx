@@ -5,7 +5,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { DetailsProduct } from './pages/details';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncPreloadProcess } from './states/isPreload/action';
-import { asyncUnsetAuthUser } from './states/authUser/action';
 import DashboardPage from './pages/DashboardPage';
 import { Navbar } from './components/Navbar';
 
@@ -30,7 +29,8 @@ const App = () => {
         <Routes>
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/details/:productId' element={<DetailsProduct />} />
+          {/* <Route path='/details/:productId' element={<DetailsProduct />} /> */}
+          <Route path='/details' element={<DetailsProduct />} />
           <Route path='/dashboard' element={<DashboardPage />} />
           <Route path='*' element={<Navigate to={'/dashboard'} />} />
         </Routes>

@@ -2,7 +2,10 @@ import { axios_api } from '../api/axios_api';
 
 const api = (() => {
   function putAuthUserLocalStorage(authUser) {
-    localStorage.setItem('authUser', JSON.stringify(authUser));
+    localStorage.setItem(
+      'authUser',
+      JSON.stringify({ id: authUser.id, fullName: authUser.fullName })
+    );
   }
 
   function _getAuthUserLocalStorage() {
@@ -26,16 +29,60 @@ const api = (() => {
     }
   }
 
-  async function register({ fullName, email, password }) {
+  async function _getUserByReferralCode({ referralCode }) {
     try {
-      // Email validation
-      const { data: validation } = await _getUserByEmail({ email });
-      if (validation.length) {
+      const { data } = await axios_api.get('/users', {
+        params: {
+          referralCode: referralCode.trim(),
+        },
+      });
+      return { data };
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function _addReferralPoint({ userId, value, currentValue }) {
+    try {
+      await axios_api.patch(`/users/${userId}`, {
+        referralPoint: currentValue + value,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function register({ fullName, email, password, referralCode }) {
+    try {
+      // email validation
+      const { data: emailData } = await _getUserByEmail({ email });
+      if (emailData.length) {
         return {
           data: null,
           error: true,
           message: `User with email:${email} is already exist!`,
         };
+      }
+
+      if (referralCode.trim()) {
+        // referralCode validation
+        const { data: inviterUserData } = await _getUserByReferralCode({
+          referralCode,
+        });
+        if (!inviterUserData.length) {
+          return {
+            data: null,
+            error: true,
+            message: `Refferral Code: ${referralCode} is not found!`,
+          };
+        }
+
+        // Add referralPoint to inviterUser
+        await _addReferralPoint({
+          userId: inviterUserData[0].id,
+          value: 50000,
+          currentValue: inviterUserData[0].referralPoint,
+        });
       }
 
       // Post
@@ -45,6 +92,7 @@ const api = (() => {
         email,
         password,
         referralCode: `REF-${email}`,
+        referralPoint: referralCode.trim() ? 50000 : 0,
       });
 
       if (!Object.keys(data).length) {
@@ -90,7 +138,7 @@ const api = (() => {
 
       return { error: false, data, message: 'success' };
     } catch (error) {
-      console.log(error);
+      console.log('User belum login!');
       return { data: null, error: true, message: error };
     }
   }
@@ -149,8 +197,8 @@ const api = (() => {
         address,
         description,
         startAt,
-        price,
-        capacity,
+        price: Number(price),
+        capacity: Number(capacity),
         currentCapacity: 0,
       });
       return { data, error: false, message: 'success' };
@@ -182,44 +230,53 @@ const api = (() => {
     }
   }
 
-  async function createReferralLog({ inviterUserId, receiverUserId }) {
-    try {
-      const { data } = await axios_api.post('/referralLogs', {
-        inviterUserId,
-        receiverUserId,
-        isUsedByInviter: false,
-        isUsedBySender: false,
-      });
-      return { data, error: false, message: 'success' };
-    } catch (error) {
-      console.log(error);
-      return { data: null, error: true, message: error };
-    }
-  }
+  // async function createReferralLog({ referralId, receiverUserId }) {
+  //   try {
+  //     const { data } = await axios_api.post('/referralLogs', {
+  //       id: `referralLog-${+new Date()}`,
+  //       referralId,
+  //       receiverUserId,
+  //       isUsedByInviter: false,
+  //       isUsedBySender: false,
+  //     });
+  //     return { data, error: false, message: 'success' };
+  //   } catch (error) {
+  //     console.log(error);
+  //     return { data: null, error: true, message: error };
+  //   }
+  // }
 
-  async function getTotalUnusedReferralByInviter(inviterUserId) {
-    try {
-      const { data } = await axios_api.get('/referralLogs', {
-        params: { inviterUserId, isUsedByInviter: false },
-      });
-      return { data, error: false, message: 'success' };
-    } catch (error) {
-      console.log(error);
-      return { data: null, error: true, message: error };
-    }
-  }
+  // async function patchReferralOnUsedByInviter({ referralId }) {
+  //   try {
+  //     const { data } = await axios_api.patch('/referralLogs');
+  //   } catch (error) {
+  //     console.log(referralId);
+  //   }
+  // }
 
-  async function getTotalUnusedReferralByReceiver(receiverUserId) {
-    try {
-      const { data } = await axios_api.get('/referralLogs', {
-        params: { receiverUserId, isUsedByReceiver: false },
-      });
-      return { data, error: false, message: 'success' };
-    } catch (error) {
-      console.log(error);
-      return { data: null, error: true, message: error };
-    }
-  }
+  // async function getTotalUnusedReferralByInviter(referralId) {
+  //   try {
+  //     const { data } = await axios_api.get('/referralLogs', {
+  //       params: { referralId, isUsedByInviter: false },
+  //     });
+  //     return { data, error: false, message: 'success' };
+  //   } catch (error) {
+  //     console.log(error);
+  //     return { data: null, error: true, message: error };
+  //   }
+  // }
+
+  // async function getTotalUnusedReferralByReceiver(receiverUserId) {
+  //   try {
+  //     const { data } = await axios_api.get('/referralLogs', {
+  //       params: { receiverUserId, isUsedByReceiver: false },
+  //     });
+  //     return { data, error: false, message: 'success' };
+  //   } catch (error) {
+  //     console.log(error);
+  //     return { data: null, error: true, message: error };
+  //   }
+  // }
 
   async function createOrder({ userId, productId, productTotal, discount }) {
     try {
@@ -252,9 +309,9 @@ const api = (() => {
     createProduct,
     editProduct,
     deleteProduct,
-    createReferralLog,
-    getTotalUnusedReferralByInviter,
-    getTotalUnusedReferralByReceiver,
+    // createReferralLog,
+    // getTotalUnusedReferralByInviter,
+    // getTotalUnusedReferralByReceiver,
     createOrder,
   };
 })();

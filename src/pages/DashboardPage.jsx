@@ -3,6 +3,7 @@ import CreateProductInput from '../components/CreateProductInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { asyncReceiveProducts } from '../states/products/action';
+import { asyncReceiveUsers } from '../states/users/action';
 
 const DashboardPage = () => {
   const { products = [] } = useSelector((states) => states);
@@ -11,6 +12,7 @@ const DashboardPage = () => {
 
   useEffect(() => {
     dispatch(asyncReceiveProducts());
+    dispatch(asyncReceiveUsers());
   }, [dispatch]);
 
   return (

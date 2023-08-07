@@ -86,7 +86,16 @@ const Register = () => {
             className='my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white'
             type='submit'
             onClick={() =>
-              dispatch(asyncRegisterUser({ fullName, email, password }))
+              dispatch(
+                asyncRegisterUser({ fullName, email, password, referralCode })
+              ).then(({ error, message }) => {
+                if (error) {
+                  console.log(message);
+                  alert(message);
+                } else {
+                  navigate('/login');
+                }
+              })
             }
           >
             Register
