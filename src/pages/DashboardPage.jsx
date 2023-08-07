@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CreateProductInput from '../components/CreateProductInput';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { asyncReceiveProducts } from '../states/products/action';
 
 const DashboardPage = () => {
   const { products = [] } = useSelector((states) => states);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(asyncReceiveProducts());
+  }, [dispatch]);
 
   return (
     <>

@@ -66,7 +66,7 @@ const CreateProductInput = () => {
         {Object.entries(createProductData).map(([key, value]) => {
           if (key === 'startAt') {
             return (
-              <div className='flex'>
+              <div key={value} className='flex'>
                 <div className='bg-white text-slate-700 font-medium rounded-l-full py-[0.5vw] md:py-[0.5rem] px-[4vw] md:px-[2rem] text-[2.5vw] md:text-[1em]'>
                   {value} :
                 </div>
@@ -85,6 +85,7 @@ const CreateProductInput = () => {
           } else if (key === 'description') {
             return (
               <textarea
+                key={value}
                 value={createProductInput[key]}
                 onChange={({ target }) =>
                   createProductInputHandler(key, target.value)
@@ -96,6 +97,7 @@ const CreateProductInput = () => {
           } else if (key === 'capacity' || key === 'price') {
             return (
               <input
+                key={value}
                 value={createProductInput[key]}
                 onChange={({ target }) =>
                   createProductInputHandler(key, target.value)
@@ -110,6 +112,7 @@ const CreateProductInput = () => {
 
           return (
             <input
+              key={value}
               value={createProductInput[key]}
               onChange={({ target }) =>
                 createProductInputHandler(key, target.value)
