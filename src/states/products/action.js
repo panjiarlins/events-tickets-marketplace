@@ -69,7 +69,7 @@ function asyncCreateProduct({
 }) {
   return async (dispatch) => {
     try {
-      const { data: product } = await api.createProduct({
+      const { data: product, error } = await api.createProduct({
         userId,
         title,
         imageUrl,
@@ -83,6 +83,7 @@ function asyncCreateProduct({
         capacity,
       });
       dispatch(createProductActionCreator(product));
+      return { error };
     } catch (error) {
       console.log(error);
     }

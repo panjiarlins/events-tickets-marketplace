@@ -4,11 +4,13 @@ import { IoCloseCircle } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { isCreateProductButtonCloseOnClickActionCreator } from '../states/isCreateProductButtonCloseOnClick/action';
 import { asyncCreateProduct } from '../states/products/action';
+import { useNavigate } from 'react-router-dom';
 
 const CreateProductInput = () => {
   const { authUser = null, isCreateProductButtonCloseOnClick = true } =
     useSelector((states) => states);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const createProductData = {
     title: 'Title',
@@ -22,8 +24,7 @@ const CreateProductInput = () => {
     startAt: 'Start at',
     description: 'Description',
   };
-
-  const defaultInputValue = {
+  const defaultCreateProductInput = {
     title: '',
     imageUrl: '',
     country: '',
@@ -35,9 +36,8 @@ const CreateProductInput = () => {
     startAt: '',
     description: '',
   };
-
   const [createProductInput, setCreateProductInput] = useState({
-    ...defaultInputValue,
+    ...defaultCreateProductInput,
   });
 
   const createProductInputHandler = (key, value) => {
@@ -76,8 +76,7 @@ const CreateProductInput = () => {
                     createProductInputHandler(key, target.value)
                   }
                   type='datetime-local'
-                  // min='2018-06-07T00:00'
-                  // max='2018-06-14T00:00'
+                  // min='2023-08-08T14:06:24.960Z'
                   className='flex-1 text-slate-700 font-medium rounded-r-full py-[0.5vw] md:py-[0.5rem] px-[4vw] md:px-[2rem] text-[2.5vw] md:text-[1em]'
                 />
               </div>
@@ -131,11 +130,12 @@ const CreateProductInput = () => {
                 authUser: authUser.id,
                 ...createProductInput,
               })
-            );
-            //////////////////////////////////////////////////////////////////
-            setCreateProductInput({ ...defaultInputValue });
-            dispatch(isCreateProductButtonCloseOnClickActionCreator());
-            //////////////////////////////////////////////////////////////////
+            ).then(({ error }) => {
+              if (!error) {
+                dispatch(isCreateProductButtonCloseOnClickActionCreator());
+                setCreateProductInput({ ...defaultCreateProductInput });
+              }
+            });
           }}
           className='text-white bg-[#24BAEF] font-medium rounded-full mt-[4vw] md:mt-[2rem] py-[0.5vw] md:py-[0.5rem] px-[4vw] md:px-[2rem] text-[2.5vw] md:text-[1em]'
         >

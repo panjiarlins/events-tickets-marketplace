@@ -12,10 +12,6 @@ const api = (() => {
     return JSON.parse(localStorage.getItem('authUser'));
   }
 
-  //   function _fetchWithAuth(url, config = {}) {
-  //     return axios_api({ ...config });
-  //   }
-
   async function _getUserByEmail({ email }) {
     try {
       const { data } = await axios_api.get('/users', {
@@ -230,54 +226,6 @@ const api = (() => {
     }
   }
 
-  // async function createReferralLog({ referralId, receiverUserId }) {
-  //   try {
-  //     const { data } = await axios_api.post('/referralLogs', {
-  //       id: `referralLog-${+new Date()}`,
-  //       referralId,
-  //       receiverUserId,
-  //       isUsedByInviter: false,
-  //       isUsedBySender: false,
-  //     });
-  //     return { data, error: false, message: 'success' };
-  //   } catch (error) {
-  //     console.log(error);
-  //     return { data: null, error: true, message: error };
-  //   }
-  // }
-
-  // async function patchReferralOnUsedByInviter({ referralId }) {
-  //   try {
-  //     const { data } = await axios_api.patch('/referralLogs');
-  //   } catch (error) {
-  //     console.log(referralId);
-  //   }
-  // }
-
-  // async function getTotalUnusedReferralByInviter(referralId) {
-  //   try {
-  //     const { data } = await axios_api.get('/referralLogs', {
-  //       params: { referralId, isUsedByInviter: false },
-  //     });
-  //     return { data, error: false, message: 'success' };
-  //   } catch (error) {
-  //     console.log(error);
-  //     return { data: null, error: true, message: error };
-  //   }
-  // }
-
-  // async function getTotalUnusedReferralByReceiver(receiverUserId) {
-  //   try {
-  //     const { data } = await axios_api.get('/referralLogs', {
-  //       params: { receiverUserId, isUsedByReceiver: false },
-  //     });
-  //     return { data, error: false, message: 'success' };
-  //   } catch (error) {
-  //     console.log(error);
-  //     return { data: null, error: true, message: error };
-  //   }
-  // }
-
   async function createOrder({ userId, productId, productTotal, discount }) {
     try {
       const dateTime = String(+new Date());
@@ -299,7 +247,6 @@ const api = (() => {
 
   return {
     putAuthUserLocalStorage,
-    // _getAuthUserLocalStorage,
     register,
     login,
     getOwnProfile,
@@ -309,9 +256,6 @@ const api = (() => {
     createProduct,
     editProduct,
     deleteProduct,
-    // createReferralLog,
-    // getTotalUnusedReferralByInviter,
-    // getTotalUnusedReferralByReceiver,
     createOrder,
   };
 })();
