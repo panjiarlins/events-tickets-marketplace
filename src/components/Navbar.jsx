@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { IconContext } from 'react-icons';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaPowerOff } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { isCreateEventButtonCloseOnClickActionCreator } from '../states/isCreateEventButtonCloseOnClick/action';
+import { isCreateProductButtonCloseOnClickActionCreator } from '../states/isCreateProductButtonCloseOnClick/action';
+import { asyncUnsetAuthUser } from '../states/authUser/action';
 
-const Navbar = (onClickButtonClose) => {
-  const { isCreateEventButtonCloseOnClick = false } = useSelector(
-    (states) => states
-  );
+const Navbar = () => {
+  const { authUser = null } = useSelector((states) => states);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isHumbergerMenuOnClick, setIsHumbergerMenuOnClick] = useState(false);
@@ -25,10 +24,20 @@ const Navbar = (onClickButtonClose) => {
         />
       </div>
       <IconContext.Provider value={{ color: '#24BAEF', size: '50%' }}>
-        <FaUserCircle
-          className='cursor-pointer'
-          onClick={() => navigate('/login')}
-        />
+        {authUser ? (
+          <FaPowerOff
+            className='cursor-pointer'
+            onClick={() => {
+              dispatch(asyncUnsetAuthUser());
+              navigate('/login');
+            }}
+          />
+        ) : (
+          <FaUserCircle
+            className='cursor-pointer'
+            onClick={() => navigate('/login')}
+          />
+        )}
       </IconContext.Provider>
       <IconContext.Provider value={{ color: '#86878B', size: '7vw' }}>
         <RxHamburgerMenu
@@ -48,11 +57,7 @@ const Navbar = (onClickButtonClose) => {
         </button>
         <button
           onClick={() =>
-            dispatch(
-              isCreateEventButtonCloseOnClickActionCreator(
-                !isCreateEventButtonCloseOnClick
-              )
-            )
+            dispatch(isCreateProductButtonCloseOnClickActionCreator())
           }
           className='text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]'
         >

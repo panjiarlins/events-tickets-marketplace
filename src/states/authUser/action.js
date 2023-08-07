@@ -26,7 +26,7 @@ function asyncSetAuthUser({ email, password }) {
       const { data } = await api.login({ email, password });
       api.putAuthUserLocalStorage(data);
 
-      const authUser = await api.getOwnProfile();
+      const { data: authUser } = await api.getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
       console.log(error);

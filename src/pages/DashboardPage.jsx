@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CreateProductInput from '../components/CreateProductInput';
-import { useSelector } from 'react-redux';
 
 const DashboardPage = () => {
-  const { isCreateEventButtonCloseOnClick = false } = useSelector(
-    (states) => states
-  );
-  // const [isCreateEventButtonCloseOnClick, setIsCreateEventButtonCloseOnClick] =
-  //   useState(false);
-
-  // const toogleCreateEventButtonClose = () =>
-  //   setIsCreateEventButtonCloseOnClick(!isCreateEventButtonCloseOnClick);
-
   return (
     <>
-      {/* <div className={isCreateEventButtonCloseOnClick ? 'hidden' : 'block'}>
-        <CreateProductInput />
-      </div> */}
+      <CreateProductInput />
       <div className='dashboard-container'>
         <div className='dashboard-jumbotron'>
           <img
@@ -30,7 +18,7 @@ const DashboardPage = () => {
             <div className='dashboard-content_title_line'></div>
           </div>
           <div className='dashboard-content_cards'>
-            {[1, 2, 3, 4, 5, 6].map(() => (
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => (
               <div className='dashboard-content_cards_card'>
                 <div className='dashboard-content_cards_card_image'>
                   <img

@@ -1,5 +1,13 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "user-1691339213247",
+      "fullName": "test",
+      "email": "test",
+      "password": "test",
+      "referralCode": "REF-test"
+    }
+  ],
   "products": [],
   "orders": [],
   "referral_logs": [],

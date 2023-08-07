@@ -17,8 +17,9 @@ const Login = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    console.log('ok', authUser);
     if (authUser !== null) {
-      navigate('/login');
+      navigate('/dashboard');
     }
   }, [authUser, navigate]);
 
