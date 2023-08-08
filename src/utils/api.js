@@ -226,17 +226,164 @@ const api = (() => {
     }
   }
 
-  async function createOrder({ userId, productId, productTotal, discount }) {
+  async function getVoucherCode({ productId, voucherCode }) {
     try {
+      const { data } = await axios_api.get('/promotions', {
+        params: { productId, voucherCode: voucherCode.trim() },
+      });
+      if (!data.length) {
+        return {
+          data: null,
+          error: true,
+          message: `voucherCode: ${voucherCode} is wrong!`,
+        };
+      }
+
+      if (data[0].currentCapacity >= data[0].capacity) {
+        return {
+          data: null,
+          error: true,
+          message: `voucherCode: ${voucherCode} has reached the limit!`,
+        };
+      }
+
+      return { data: data[0], error: false, message: 'success' };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: true, message: error };
+    }
+  }
+
+  async function createVoucherCode({
+    productId,
+    voucherCode,
+    capacity,
+    promotionPoint,
+  }) {
+    try {
+      // Voucher code validation
+      const { data: voucherCodeValidationData } = await getVoucherCode({
+        productId,
+        voucherCode,
+      });
+
+      if (!voucherCodeValidationData) {
+        return {
+          data: null,
+          error: true,
+          message: `voucherCode: ${voucherCode} is already exist in this product!`,
+        };
+      }
+
+      // Post
+      const { data } = await axios_api.post('/promotions', {
+        id: `promotion-${+new Date()}`,
+        productId,
+        voucherCode,
+        promotionPoint: Number(promotionPoint),
+        capacity: Number(capacity),
+        currentCapacity: 0,
+      });
+      return { data, error: false, message: 'success' };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: true, message: error };
+    }
+  }
+
+  async function _onUsedVoucherCode({ productId, voucherCode }) {
+    try {
+      // Voucher code validation
+      const { data: voucherCodeValidationData } = await getVoucherCode({
+        productId,
+        voucherCode,
+      });
+
+      const { data } = await axios_api.patch(
+        `/promotions/${voucherCodeValidationData.id}`,
+        {
+          currentCapacity: voucherCodeValidationData.currentCapacity + 1,
+        }
+      );
+
+      return { data, error: false, message: 'success' };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: true, message: error };
+    }
+  }
+
+  async function _onUsedReferralPoint({
+    userId,
+    referralPoint,
+    usedReferralPoint,
+  }) {
+    try {
+      const { data } = await axios_api.patch(`/users/${userId}`, {
+        referralPoint: referralPoint - usedReferralPoint,
+      });
+
+      return { data, error: false, message: 'success' };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: true, message: error };
+    }
+  }
+
+  async function createTransaction({
+    userId,
+    productId,
+    price,
+    priceTotal,
+    productTotal,
+    usedPromotionPoint,
+    usedReferralPoint,
+    referralPoint,
+    voucherCode,
+  }) {
+    try {
+      if (voucherCode.trim()) {
+        await _onUsedVoucherCode({
+          productId,
+          voucherCode: voucherCode.trim(),
+        });
+      }
+
+      if (usedReferralPoint > 0) {
+        await _onUsedReferralPoint({
+          userId,
+          referralPoint,
+          usedReferralPoint,
+        });
+      }
+
       const dateTime = String(+new Date());
-      const { data } = await axios_api.get('/orders', {
-        id: `order-${dateTime}`,
+      const { data } = await axios_api.post('/transactions', {
+        id: `transaction-${dateTime}`,
         userId,
         productId,
-        productTotal,
-        discount,
-        priceTotal: productTotal * (1 - discount),
+        price: Number(price),
+        priceTotal: Number(priceTotal),
+        productTotal: Number(productTotal),
+        usedPromotionPoint: Number(usedPromotionPoint),
+        usedReferralPoint: Number(usedReferralPoint),
         createdAt: dateTime,
+        isPaid: false,
+        paymentLink: `http://localhost:3000/pay/transaction-${dateTime}`,
+      });
+      return { data, error: false, message: 'success' };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: true, message: error };
+    }
+  }
+
+  async function getUserTransactions({ userId }) {
+    try {
+      const { data } = await axios_api.get('/transactions', {
+        params: {
+          userId,
+        },
       });
       return { data, error: false, message: 'success' };
     } catch (error) {
@@ -256,7 +403,10 @@ const api = (() => {
     createProduct,
     editProduct,
     deleteProduct,
-    createOrder,
+    getVoucherCode,
+    createVoucherCode,
+    createTransaction,
+    getUserTransactions,
   };
 })();
 

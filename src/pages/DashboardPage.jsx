@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react';
 import CreateProductInput from '../components/CreateProductInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { asyncReceiveProducts } from '../states/products/action';
-import { asyncReceiveUsers } from '../states/users/action';
 
 const DashboardPage = () => {
   const { products = [] } = useSelector((states) => states);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(asyncReceiveProducts());
-    dispatch(asyncReceiveUsers());
   }, [dispatch]);
 
   return (
@@ -45,12 +42,12 @@ const DashboardPage = () => {
                 <div className='truncate dashboard-content_cards_card_title'>
                   {product.title}
                 </div>
-                <button
-                  onClick={() => navigate(`/products/${product.id}`)}
+                <Link
+                  to={`/products/${product.id}`}
                   className='truncate dashboard-content_cards_card_buttonDetail'
                 >
                   LIHAT DETAIL
-                </button>
+                </Link>
               </div>
             ))}
           </div>

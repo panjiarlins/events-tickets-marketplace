@@ -7,11 +7,28 @@
       "password": "test",
       "referralCode": "REF-test100@test.com",
       "referralPoint": 0
+    },
+    {
+      "id": "user-1691423705878",
+      "fullName": "TEST",
+      "email": "test@test.com",
+      "password": "test",
+      "referralCode": "REF-test@test.com",
+      "referralPoint": 0
+    },
+    {
+      "id": "user-1691473691799",
+      "fullName": "Test",
+      "email": "test1@test.com",
+      "password": "test",
+      "referralCode": "REF-test1@test.com",
+      "referralPoint": 50000
     }
   ],
   "products": [
     {
-      "id": "product-1691417478794",
+      "id": "product-1691422349211",
+      "userId": "user-1691415836837",
       "title": "Stand-Up Fest “The Series”",
       "imageUrl": "https://comika.id/wp-content/uploads/2023/07/stand-up-fest-the-series-cover-300x300.png",
       "country": "Indonesia",
@@ -19,13 +36,82 @@
       "city": "Jakarta Selatan",
       "address": "Jalan",
       "description": "Stand Up Fest \"The Series\" persembahan Indonesia Media yang menampilkan Komika ternama Popon Kerok, Ate, Yono Bakrie, Soleh Solihun dan Mongol Stres di Gedung Menara Kuningan Jakarta. Hadir dengan versi video digital yang menyampaikan keresahan dari setiap Komikanya. Mulai dari Popon Kerok yang memperkenalkan dirinya sebagai bapak rumah tangga namun kesehariannya menjadi makmum. Popon cerita soal peran menjadi seorang ayah, pola parenting, ibadah, kiat-kiat lomba 17 Agustus-an ditanamkannya sejak dini. Lalu, Ate julid dengan orang yang war tiket Coldplay hingga me-riffing menteri PUPR Basuki Hadimuljono. Dilanjut dengan Yono Bakrie yang merasa mirip Lee Min Ho. Soleh Solihun yang nyenggol Mongol Stres tentang memuja setan hingga di akhir sesi Mongol Stres menjawab semua keresahan tentang gereja dan satanis yang melekat pada dirinya. Tonton video digitalnya sekarang original dan eksklusif di Comika.id.",
-      "startAt": "2023-08-28T21:08",
+      "startAt": "2023-08-28T14:00",
       "price": 100000,
       "capacity": 100,
       "currentCapacity": 0
     }
   ],
-  "orders": [],
-  "referralLogs": [],
-  "promotions": []
+  "transactions": [
+    {
+      "id": "transaction-1691504421391",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 40000,
+      "productTotal": 1,
+      "usedPromotionPoint": 10000,
+      "usedReferralPoint": 50000,
+      "createdAt": "1691504421391",
+      "isPaid": false,
+      "paymentLink": "http://localhost:3000/pay/transaction-1691504421391"
+    },
+    {
+      "id": "transaction-1691504526857",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 40000,
+      "productTotal": 1,
+      "usedPromotionPoint": 10000,
+      "usedReferralPoint": 50000,
+      "createdAt": "1691504526857",
+      "isPaid": false,
+      "paymentLink": "http://localhost:3000/pay/transaction-1691504526857"
+    },
+    {
+      "id": "transaction-1691504631110",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 40000,
+      "productTotal": 1,
+      "usedPromotionPoint": 10000,
+      "usedReferralPoint": 50000,
+      "createdAt": "1691504631110",
+      "isPaid": false,
+      "paymentLink": "http://localhost:3000/pay/transaction-1691504631110"
+    },
+    {
+      "id": "transaction-1691504658902",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 90000,
+      "productTotal": 1,
+      "usedPromotionPoint": 10000,
+      "usedReferralPoint": 0,
+      "createdAt": "1691504658902",
+      "isPaid": false,
+      "paymentLink": "http://localhost:3000/pay/transaction-1691504658902"
+    }
+  ],
+  "promotions": [
+    {
+      "id": "promotion-1691460336089",
+      "productId": "product-1691422349211",
+      "voucherCode": "BELANJA",
+      "promotionPoint": 10000,
+      "capacity": 6,
+      "currentCapacity": 6
+    },
+    {
+      "id": "promotion-1691461069753",
+      "productId": "product-1691422349211",
+      "voucherCode": "BELANJA_1000",
+      "promotionPoint": 1000,
+      "capacity": 20,
+      "currentCapacity": 0
+    }
+  ]
 }

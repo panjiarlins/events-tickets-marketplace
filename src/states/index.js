@@ -4,6 +4,7 @@ import isPreloadReducer from './isPreload/reducer';
 import usersReducer from './users/reducer';
 import productsReducer from './products/reducer';
 import isCreateProductButtonCloseOnClickReducer from './isCreateProductButtonCloseOnClick/reducer';
+import userTransactionsReducer from './userTransactions/reducer';
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     isPreload: isPreloadReducer,
     users: usersReducer,
     products: productsReducer,
+    userTransactions: userTransactionsReducer,
     isCreateProductButtonCloseOnClick: isCreateProductButtonCloseOnClickReducer,
   },
 });

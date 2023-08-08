@@ -4,13 +4,11 @@ import { IoCloseCircle } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { isCreateProductButtonCloseOnClickActionCreator } from '../states/isCreateProductButtonCloseOnClick/action';
 import { asyncCreateProduct } from '../states/products/action';
-import { useNavigate } from 'react-router-dom';
 
 const CreateProductInput = () => {
   const { authUser = null, isCreateProductButtonCloseOnClick = true } =
     useSelector((states) => states);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const createProductData = {
     title: 'Title',
@@ -127,7 +125,7 @@ const CreateProductInput = () => {
           onClick={() => {
             dispatch(
               asyncCreateProduct({
-                authUser: authUser.id,
+                userId: authUser.id,
                 ...createProductInput,
               })
             ).then(({ error }) => {
