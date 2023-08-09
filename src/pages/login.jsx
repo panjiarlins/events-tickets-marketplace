@@ -6,7 +6,7 @@ import { asyncPreloadProcess } from '../states/isPreload/action';
 import { asyncSetAuthUser } from '../states/authUser/action';
 
 const Login = () => {
-  const { authUser = null } = useSelector((states) => states);
+  const authUser = useSelector((states) => states.authUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');

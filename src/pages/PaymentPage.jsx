@@ -5,6 +5,7 @@ import api from '../utils/api';
 const PaymentPage = () => {
   const { transactionId } = useParams();
   const [isPaid, setIsPaid] = useState(false);
+
   useEffect(() => {
     api.payTransaction({ transactionId }).then(({ error, message }) => {
       if (error) {
@@ -15,6 +16,7 @@ const PaymentPage = () => {
       setIsPaid(true);
     });
   }, [transactionId]);
+
   return (
     <>
       {isPaid ? (

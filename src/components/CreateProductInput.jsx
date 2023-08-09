@@ -6,8 +6,10 @@ import { isCreateProductButtonCloseOnClickActionCreator } from '../states/isCrea
 import { asyncCreateProduct } from '../states/products/action';
 
 const CreateProductInput = () => {
-  const { authUser = null, isCreateProductButtonCloseOnClick = true } =
-    useSelector((states) => states);
+  const authUser = useSelector((states) => states.authUser);
+  const isCreateProductButtonCloseOnClick = useSelector(
+    (states) => states.isCreateProductButtonCloseOnClick
+  );
   const dispatch = useDispatch();
 
   const createProductData = {

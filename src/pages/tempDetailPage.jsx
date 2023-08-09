@@ -8,7 +8,8 @@ import QRCode from 'react-qr-code';
 import { asyncPreloadProcess } from '../states/isPreload/action';
 
 const DetailPage = () => {
-  const { authUser = null, products = [] } = useSelector((states) => states);
+  const authUser = useSelector((states) => states.authUser);
+  const products = useSelector((states) => states.products);
   const { productId } = useParams();
   const dispatch = useDispatch();
   const [productDetail, setProductDetail] = useState(null);
