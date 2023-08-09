@@ -180,7 +180,7 @@ const DetailPage = () => {
                   <button
                     onClick={() => {
                       api
-                        .getVoucherCode({
+                        .getVoucherCodeForTransaction({
                           productId,
                           voucherCode: tempVoucherCode,
                         })

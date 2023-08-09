@@ -226,7 +226,43 @@ const api = (() => {
     }
   }
 
-  async function getVoucherCode({ productId, voucherCode }) {
+  async function createVoucherCode({
+    productId,
+    voucherCode,
+    capacity,
+    promotionPoint,
+  }) {
+    try {
+      // Voucher code validation
+      const { data: voucherCodeValidationData } = await axios_api.get(
+        '/promotions',
+        { params: { productId, voucherCode: voucherCode.trim() } }
+      );
+      if (voucherCodeValidationData.length) {
+        return {
+          data: null,
+          error: true,
+          message: `voucherCode: ${voucherCode} is already exist in this product!`,
+        };
+      }
+
+      // Post
+      const { data } = await axios_api.post('/promotions', {
+        id: `promotion-${+new Date()}`,
+        productId,
+        voucherCode,
+        promotionPoint: Number(promotionPoint),
+        capacity: Number(capacity),
+        currentCapacity: 0,
+      });
+      return { data, error: false, message: 'success' };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: true, message: error };
+    }
+  }
+
+  async function getVoucherCodeForTransaction({ productId, voucherCode }) {
     try {
       const { data } = await axios_api.get('/promotions', {
         params: { productId, voucherCode: voucherCode.trim() },
@@ -254,50 +290,14 @@ const api = (() => {
     }
   }
 
-  async function createVoucherCode({
-    productId,
-    voucherCode,
-    capacity,
-    promotionPoint,
-  }) {
-    try {
-      // Voucher code validation
-      const { data: voucherCodeValidationData } = await getVoucherCode({
-        productId,
-        voucherCode,
-      });
-
-      if (!voucherCodeValidationData) {
-        return {
-          data: null,
-          error: true,
-          message: `voucherCode: ${voucherCode} is already exist in this product!`,
-        };
-      }
-
-      // Post
-      const { data } = await axios_api.post('/promotions', {
-        id: `promotion-${+new Date()}`,
-        productId,
-        voucherCode,
-        promotionPoint: Number(promotionPoint),
-        capacity: Number(capacity),
-        currentCapacity: 0,
-      });
-      return { data, error: false, message: 'success' };
-    } catch (error) {
-      console.log(error);
-      return { data: null, error: true, message: error };
-    }
-  }
-
   async function _onUsedVoucherCode({ productId, voucherCode }) {
     try {
       // Voucher code validation
-      const { data: voucherCodeValidationData } = await getVoucherCode({
-        productId,
-        voucherCode,
-      });
+      const { data: voucherCodeValidationData } =
+        await getVoucherCodeForTransaction({
+          productId,
+          voucherCode,
+        });
 
       const { data } = await axios_api.patch(
         `/promotions/${voucherCodeValidationData.id}`,
@@ -457,7 +457,7 @@ const api = (() => {
     createProduct,
     editProduct,
     deleteProduct,
-    getVoucherCode,
+    getVoucherCodeForTransaction,
     createVoucherCode,
     createTransaction,
     getUserTransactions,

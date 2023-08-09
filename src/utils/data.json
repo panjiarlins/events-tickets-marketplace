@@ -59,6 +59,14 @@
       "promotionPoint": 1000,
       "capacity": 20,
       "currentCapacity": 1
+    },
+    {
+      "id": "promotion-1691594112063",
+      "productId": "product-1691422349211",
+      "voucherCode": "OKE20",
+      "promotionPoint": 20000,
+      "capacity": 20,
+      "currentCapacity": 0
     }
   ]
 }
