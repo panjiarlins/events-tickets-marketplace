@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import CreateProductInput from '../components/CreateProductInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { asyncReceiveProducts } from '../states/products/action';
@@ -14,7 +13,6 @@ const DashboardPage = () => {
 
   return (
     <>
-      <CreateProductInput />
       <div className='dashboard-container'>
         <div className='dashboard-jumbotron'>
           <img
@@ -24,7 +22,7 @@ const DashboardPage = () => {
         </div>
         <div className='dashboard-content'>
           <div className='dashboard-content_title'>
-            <p className='dashboard-content_title_text'>All Events</p>
+            <p className='dashboard-content_title_text'>List Event</p>
             <div className='dashboard-content_title_line'></div>
           </div>
           <div className='dashboard-content_cards'>
@@ -34,7 +32,9 @@ const DashboardPage = () => {
                   <img src={product.imageUrl} alt={product.title} />
                 </div>
                 <div className='truncate dashboard-content_cards_card_price'>
-                  Rp {product.price}
+                  {product.price
+                    ? `Rp ${product.price.toLocaleString('id-ID')}`
+                    : 'FREE'}
                 </div>
                 <div className='truncate dashboard-content_cards_card_location'>
                   {product.city}, {product.province}, {product.country}
