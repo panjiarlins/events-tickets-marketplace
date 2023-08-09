@@ -204,7 +204,7 @@ const api = (() => {
     }
   }
 
-  async function editProduct(productId, productDetail = {}) {
+  async function editProduct({ productId, productDetail = {} }) {
     try {
       const { data } = await axios_api.patch(`/products/${productId}`, {
         ...productDetail,
@@ -216,7 +216,7 @@ const api = (() => {
     }
   }
 
-  async function deleteProduct(productId) {
+  async function deleteProduct({ productId }) {
     try {
       const { data } = await axios_api.delete(`/products/${productId}`);
       return { data, error: false, message: 'success' };
@@ -330,11 +330,41 @@ const api = (() => {
     }
   }
 
+  async function _increaseProductCurrentCapacity({ productId, productTotal }) {
+    try {
+      const {
+        data: productData,
+        error: productError,
+        message: productMessage,
+      } = await getProductDetail(productId);
+      if (productError) {
+        return { data: null, error: true, message: productMessage };
+      }
+
+      if (productData.currentCapacity >= productData.capacity) {
+        return { data: null, error: true, message: 'Product is sold out!' };
+      }
+
+      const { data, error, message } = await axios_api.patch(
+        `/products/${productId}`,
+        {
+          currentCapacity: productData.currentCapacity + productTotal,
+        }
+      );
+      if (error) {
+        return { data: null, error: true, message };
+      }
+
+      return { data, error: false, message: 'success' };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: true, message: error };
+    }
+  }
+
   async function createTransaction({
     userId,
     productId,
-    price,
-    priceTotal,
     productTotal,
     usedPromotionPoint,
     usedReferralPoint,
@@ -357,13 +387,25 @@ const api = (() => {
         });
       }
 
+      const {
+        data: productData,
+        error,
+        message,
+      } = await _increaseProductCurrentCapacity({ productId, productTotal });
+      if (error) {
+        return { data: null, error, message };
+      }
+
       const dateTime = String(+new Date());
       const { data } = await axios_api.post('/transactions', {
         id: `transaction-${dateTime}`,
         userId,
         productId,
-        price: Number(price),
-        priceTotal: Number(priceTotal),
+        price: productData.price,
+        priceTotal:
+          productData.price * productTotal -
+          usedPromotionPoint -
+          usedReferralPoint,
         productTotal: Number(productTotal),
         usedPromotionPoint: Number(usedPromotionPoint),
         usedReferralPoint: Number(usedReferralPoint),

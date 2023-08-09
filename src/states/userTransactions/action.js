@@ -1,4 +1,5 @@
 import api from '../../utils/api';
+import { increaseProductCurrentCapacityActionCreator } from '../products/action';
 
 const ActionType = {
   RECEIVE_USER_TRANSACTIONS: 'RECEIVE_USER_TRANSACTIONS',
@@ -37,8 +38,6 @@ function asyncReceviveUserTransactions({ userId }) {
 function asyncCreateUserTransaction({
   userId,
   productId,
-  price,
-  priceTotal,
   productTotal,
   usedPromotionPoint,
   usedReferralPoint,
@@ -50,8 +49,6 @@ function asyncCreateUserTransaction({
       const { data: userTransaction } = await api.createTransaction({
         userId,
         productId,
-        price,
-        priceTotal,
         productTotal,
         usedPromotionPoint,
         usedReferralPoint,
@@ -59,9 +56,9 @@ function asyncCreateUserTransaction({
         voucherCode,
       });
       dispatch(createUserTransactionActionCreator(userTransaction));
-
-      //   const { data: authUser } = await api.getOwnProfile();
-      //   dispatch(setAuthUserActionCreator(authUser));
+      dispatch(
+        increaseProductCurrentCapacityActionCreator(productId, productTotal)
+      );
 
       return { data: userTransaction, error: false, message: 'success' };
     } catch (error) {

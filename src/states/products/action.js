@@ -3,6 +3,7 @@ import api from '../../utils/api';
 const ActionType = {
   RECEIVE_PRODUCTS: 'RECEIVE_PRODUCTS',
   CREATE_PRODUCT: 'CREATE_PRODUCT',
+  INCREASE_PRODUCT_CURRENT_CAPACITY: 'INCREASE_PRODUCT_CURRENT_CAPACITY',
   EDIT_PRODUCT: 'EDIT_PRODUCT',
   DELETE_PRODUCT: 'DELETE_PRODUCT',
 };
@@ -21,6 +22,16 @@ function createProductActionCreator(product) {
     type: ActionType.CREATE_PRODUCT,
     payload: {
       product,
+    },
+  };
+}
+
+function increaseProductCurrentCapacityActionCreator(productId, productTotal) {
+  return {
+    type: ActionType.INCREASE_PRODUCT_CURRENT_CAPACITY,
+    payload: {
+      productId,
+      productTotal,
     },
   };
 }
@@ -120,6 +131,7 @@ export {
   ActionType,
   receiveProductsActionCreator,
   createProductActionCreator,
+  increaseProductCurrentCapacityActionCreator,
   editProductActionCreator,
   deleteProductActionCreator,
   asyncReceiveProducts,

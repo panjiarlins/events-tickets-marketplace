@@ -65,12 +65,18 @@ const DetailPage = () => {
                 className='w-full mb-4 object-cover'
                 alt=''
               />
-              <h1 className='text-xl font-[800]'>Rp {productDetail.price}</h1>
+              <h1 className='text-black text-xl font-[800]'>
+                {productDetail.price
+                  ? `Rp ${productDetail.price.toLocaleString('id-ID')}`
+                  : 'FREE'}
+              </h1>
               <h2 className='text-black font-bold'>
                 {productDetail.city}, {productDetail.province},{' '}
                 {productDetail.country}
               </h2>
-              <h2 className='text-black font-bold'>{productDetail.startAt}</h2>
+              <h2 className='text-black font-bold'>
+                {new Date(productDetail.startAt).toLocaleString('id-ID')}
+              </h2>
 
               <button className='bg-[#00ABF0] text-white cursor-pointer py-1 px-4 font-extrabold  border-transparent rounded-md'>
                 Buy
@@ -88,7 +94,6 @@ const DetailPage = () => {
           </p>
         </div>
       </div>
-
       {/*/////  TEMPAT TRANSAKSI SEMENTARA /////*/}
       {currentTransaction && (
         <div className='max-w-[50%] mx-auto p-[5%] bg-white'>
@@ -103,6 +108,10 @@ const DetailPage = () => {
           </Link>
         </div>
       )}
+      <div>
+        Product capacity: {productDetail.currentCapacity}/
+        {productDetail.capacity}
+      </div>
       {(() => {
         if (authUser && authUser.id === productDetail.userId) {
           return (
@@ -152,7 +161,10 @@ const DetailPage = () => {
               </button>
             </div>
           );
-        } else if (authUser) {
+        } else if (
+          authUser &&
+          productDetail.currentCapacity < productDetail.capacity
+        ) {
           return (
             <>
               <div className='text-black bg-cyan-200'>
@@ -195,7 +207,7 @@ const DetailPage = () => {
                   type='number'
                   placeholder='Jumlah tiket'
                   min={1}
-                  max={10}
+                  max={productDetail.capacity - productDetail.currentCapacity}
                 />
                 <div>
                   <div>Receipt:</div>
@@ -220,11 +232,6 @@ const DetailPage = () => {
                       asyncCreateUserTransaction({
                         userId: authUser.id,
                         productId,
-                        price: productDetail.price,
-                        priceTotal:
-                          productDetail.price * productTotal -
-                          usedPromotionPoint -
-                          usedReferralPoint,
                         productTotal,
                         usedPromotionPoint,
                         usedReferralPoint,
