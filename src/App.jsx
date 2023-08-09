@@ -7,7 +7,7 @@ import { asyncPreloadProcess } from './states/isPreload/action';
 import DashboardPage from './pages/DashboardPage';
 import { Navbar } from './components/Navbar';
 import { DetailPage } from './pages/tempDetailPage';
-// import { asyncReceiveUsers } from './states/users/action';
+import PaymentPage from './pages/PaymentPage';
 
 const App = () => {
   const { authUser = null, isPreload = false } = useSelector(
@@ -17,7 +17,6 @@ const App = () => {
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());
-    // dispatch(asyncReceiveUsers());
   }, [dispatch]);
 
   if (isPreload === null) {
@@ -29,6 +28,7 @@ const App = () => {
       <>
         <Navbar />
         <Routes>
+          <Route path='/pay/:transactionId' element={<PaymentPage />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/products/:productId' element={<DetailPage />} />
@@ -43,6 +43,7 @@ const App = () => {
     <>
       <Navbar />
       <Routes>
+        <Route path='/pay/:transactionId' element={<PaymentPage />} />
         <Route path='/products/:productId' element={<DetailPage />} />
         <Route path='/dashboard' element={<DashboardPage />} />
         <Route path='*' element={<Navigate to={'/dashboard'} />} />

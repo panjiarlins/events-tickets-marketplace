@@ -28,7 +28,7 @@ const DashboardPage = () => {
             <div className='dashboard-content_title_line'></div>
           </div>
           <div className='dashboard-content_cards'>
-            {products.map((product) => (
+            {products?.map((product) => (
               <div key={product.id} className='dashboard-content_cards_card'>
                 <div className='dashboard-content_cards_card_image'>
                   <img src={product.imageUrl} alt={product.title} />

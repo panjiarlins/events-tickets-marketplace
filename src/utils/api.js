@@ -1,4 +1,4 @@
-import { axios_api } from '../api/axios_api';
+import { axios_api, web_host } from '../api/axios_api';
 
 const api = (() => {
   function putAuthUserLocalStorage(authUser) {
@@ -369,7 +369,7 @@ const api = (() => {
         usedReferralPoint: Number(usedReferralPoint),
         createdAt: dateTime,
         isPaid: false,
-        paymentLink: `http://localhost:3000/pay/transaction-${dateTime}`,
+        paymentLink: `${web_host}/pay/transaction-${dateTime}`,
       });
       return { data, error: false, message: 'success' };
     } catch (error) {
@@ -384,6 +384,18 @@ const api = (() => {
         params: {
           userId,
         },
+      });
+      return { data, error: false, message: 'success' };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: true, message: error };
+    }
+  }
+
+  async function payTransaction({ transactionId }) {
+    try {
+      const { data } = await axios_api.patch(`/transactions/${transactionId}`, {
+        isPaid: true,
       });
       return { data, error: false, message: 'success' };
     } catch (error) {
@@ -407,6 +419,7 @@ const api = (() => {
     createVoucherCode,
     createTransaction,
     getUserTransactions,
+    payTransaction,
   };
 })();
 

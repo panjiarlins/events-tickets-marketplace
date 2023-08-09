@@ -42,60 +42,7 @@
       "currentCapacity": 0
     }
   ],
-  "transactions": [
-    {
-      "id": "transaction-1691504421391",
-      "userId": "user-1691423705878",
-      "productId": "product-1691422349211",
-      "price": 100000,
-      "priceTotal": 40000,
-      "productTotal": 1,
-      "usedPromotionPoint": 10000,
-      "usedReferralPoint": 50000,
-      "createdAt": "1691504421391",
-      "isPaid": false,
-      "paymentLink": "http://localhost:3000/pay/transaction-1691504421391"
-    },
-    {
-      "id": "transaction-1691504526857",
-      "userId": "user-1691423705878",
-      "productId": "product-1691422349211",
-      "price": 100000,
-      "priceTotal": 40000,
-      "productTotal": 1,
-      "usedPromotionPoint": 10000,
-      "usedReferralPoint": 50000,
-      "createdAt": "1691504526857",
-      "isPaid": false,
-      "paymentLink": "http://localhost:3000/pay/transaction-1691504526857"
-    },
-    {
-      "id": "transaction-1691504631110",
-      "userId": "user-1691423705878",
-      "productId": "product-1691422349211",
-      "price": 100000,
-      "priceTotal": 40000,
-      "productTotal": 1,
-      "usedPromotionPoint": 10000,
-      "usedReferralPoint": 50000,
-      "createdAt": "1691504631110",
-      "isPaid": false,
-      "paymentLink": "http://localhost:3000/pay/transaction-1691504631110"
-    },
-    {
-      "id": "transaction-1691504658902",
-      "userId": "user-1691423705878",
-      "productId": "product-1691422349211",
-      "price": 100000,
-      "priceTotal": 90000,
-      "productTotal": 1,
-      "usedPromotionPoint": 10000,
-      "usedReferralPoint": 0,
-      "createdAt": "1691504658902",
-      "isPaid": false,
-      "paymentLink": "http://localhost:3000/pay/transaction-1691504658902"
-    }
-  ],
+  "transactions": [],
   "promotions": [
     {
       "id": "promotion-1691460336089",
@@ -111,7 +58,7 @@
       "voucherCode": "BELANJA_1000",
       "promotionPoint": 1000,
       "capacity": 20,
-      "currentCapacity": 0
+      "currentCapacity": 1
     }
   ]
 }

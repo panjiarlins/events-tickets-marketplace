@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { asyncReceiveProducts } from '../states/products/action';
 import api from '../utils/api';
 import { asyncCreateUserTransaction } from '../states/userTransactions/action';
@@ -98,6 +98,9 @@ const DetailPage = () => {
             value={currentTransaction.paymentLink}
             viewBox={`0 0 256 256`}
           />
+          <Link to={currentTransaction.paymentLink} className='bg-cyan-500'>
+            {currentTransaction.paymentLink}
+          </Link>
         </div>
       )}
       {(() => {
