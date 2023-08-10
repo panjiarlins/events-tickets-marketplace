@@ -5,6 +5,7 @@ import usersReducer from './users/reducer';
 import productsReducer from './products/reducer';
 import isCreateProductButtonCloseOnClickReducer from './isCreateProductButtonCloseOnClick/reducer';
 import userTransactionsReducer from './userTransactions/reducer';
+import productReviewsReducer from './productReviews/reducer';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     users: usersReducer,
     products: productsReducer,
     userTransactions: userTransactionsReducer,
+    productReviews: productReviewsReducer,
     isCreateProductButtonCloseOnClick: isCreateProductButtonCloseOnClickReducer,
   },
 });

@@ -446,6 +446,60 @@ const api = (() => {
     }
   }
 
+  async function getProductReviews({ productId }) {
+    try {
+      const { data } = await axios_api.get('/productReviews', {
+        params: { productId },
+      });
+      return { data, error: false, message: 'success' };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: true, message: error };
+    }
+  }
+
+  async function createProductReview({ userId, productId, comment, rating }) {
+    try {
+      // userTransaction validation
+      const { data: userTransactions } = await axios_api.get('/transactions', {
+        params: { userId, productId },
+      });
+      if (!userTransactions.length) {
+        return {
+          data: null,
+          error: true,
+          message: "You haven't bought this product yet!",
+        };
+      }
+
+      // userReviews validation
+      const { data: userReviews } = axios_api.get('/productReviews', {
+        params: { userId, productId },
+      });
+
+      if (userReviews.length >= userTransactions.length) {
+        return {
+          data: null,
+          error: true,
+          message: 'You have already reviewed this products!',
+        };
+      }
+
+      // Post
+      const { data } = await axios_api.post('/productReviews', {
+        userId,
+        productId,
+        comment,
+        rating,
+        createdAt: String(+new Date()),
+      });
+      return { data, error: false, message: 'success' };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: true, message: error };
+    }
+  }
+
   return {
     putAuthUserLocalStorage,
     register,
@@ -462,6 +516,8 @@ const api = (() => {
     createTransaction,
     getUserTransactions,
     payTransaction,
+    getProductReviews,
+    createProductReview,
   };
 })();
 

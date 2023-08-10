@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const LOCAL_HOST = 'http://192.168.0.101';
+const LOCAL_HOST = 'http://192.168.203.33';
 
 const web_host = `${LOCAL_HOST}:3000`;
 
