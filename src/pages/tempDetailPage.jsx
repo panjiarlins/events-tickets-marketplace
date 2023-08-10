@@ -6,6 +6,7 @@ import api from '../utils/api';
 import { asyncCreateUserTransaction } from '../states/userTransactions/action';
 import QRCode from 'react-qr-code';
 import { asyncPreloadProcess } from '../states/isPreload/action';
+import RatingAndReviewPage from './ratingreview';
 
 const DetailPage = () => {
   const authUser = useSelector((states) => states.authUser);
@@ -251,6 +252,9 @@ const DetailPage = () => {
                 >
                   Submit
                 </button>
+                <div style={{display:"flex", justifyContent:"center", background:"red"}}>
+                  <RatingAndReviewPage  />
+                </div>
               </div>
             </>
           );

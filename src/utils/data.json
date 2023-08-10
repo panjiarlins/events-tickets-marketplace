@@ -23,6 +23,14 @@
       "password": "test",
       "referralCode": "REF-test1@test.com",
       "referralPoint": 50000
+    },
+    {
+      "id": "user-1691675347188",
+      "fullName": "gatot",
+      "email": "gatot@gatot.com",
+      "password": "gatot",
+      "referralCode": "REF-gatot@gatot.com",
+      "referralPoint": 0
     }
   ],
   "products": [
