@@ -70,7 +70,9 @@ const DetailPage = () => {
                     >
                       Create Voucher
                     </button>
-                    <IconContext.Provider value={{ size: '20%', color: 'red' }}>
+                    <IconContext.Provider
+                      value={{ size: '2rem', color: 'red' }}
+                    >
                       <MdDelete
                         onClick={() => {
                           dispatch(asyncDeleteProduct(productId));
