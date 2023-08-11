@@ -56,6 +56,9 @@ const DetailPage = () => {
                 ? `Rp ${productDetail.price.toLocaleString('id-ID')}`
                 : 'FREE'}
             </h2>
+            <h2 className='font-bold'>
+              {new Date(productDetail.startAt).toLocaleString('id-ID')}
+            </h2>
             <div>
               Product capacity: {productDetail.currentCapacity}/
               {productDetail.capacity}
