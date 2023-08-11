@@ -6,7 +6,7 @@
       "email": "test100@test.com",
       "password": "test",
       "referralCode": "REF-test100@test.com",
-      "referralPoint": 0
+      "referralPoint": 50000
     },
     {
       "id": "user-1691423705878",
@@ -23,14 +23,6 @@
       "password": "test",
       "referralCode": "REF-test1@test.com",
       "referralPoint": 50000
-    },
-    {
-      "id": "user-1691675347188",
-      "fullName": "gatot",
-      "email": "gatot@gatot.com",
-      "password": "gatot",
-      "referralCode": "REF-gatot@gatot.com",
-      "referralPoint": 0
     }
   ],
   "products": [
@@ -46,11 +38,306 @@
       "description": "Stand Up Fest \"The Series\" persembahan Indonesia Media yang menampilkan Komika ternama Popon Kerok, Ate, Yono Bakrie, Soleh Solihun dan Mongol Stres di Gedung Menara Kuningan Jakarta. Hadir dengan versi video digital yang menyampaikan keresahan dari setiap Komikanya. Mulai dari Popon Kerok yang memperkenalkan dirinya sebagai bapak rumah tangga namun kesehariannya menjadi makmum. Popon cerita soal peran menjadi seorang ayah, pola parenting, ibadah, kiat-kiat lomba 17 Agustus-an ditanamkannya sejak dini. Lalu, Ate julid dengan orang yang war tiket Coldplay hingga me-riffing menteri PUPR Basuki Hadimuljono. Dilanjut dengan Yono Bakrie yang merasa mirip Lee Min Ho. Soleh Solihun yang nyenggol Mongol Stres tentang memuja setan hingga di akhir sesi Mongol Stres menjawab semua keresahan tentang gereja dan satanis yang melekat pada dirinya. Tonton video digitalnya sekarang original dan eksklusif di Comika.id.",
       "startAt": "2023-08-28T14:00",
       "price": 100000,
-      "capacity": 10,
+      "capacity": 100,
+      "currentCapacity": 16
+    },
+    {
+      "id": "product-1691649832950",
+      "userId": "user-1691649687492",
+      "title": "Si Paling Hijrah",
+      "imageUrl": "https://comika.id/wp-content/uploads/2023/08/si-paling-hijrah-cover-300x300.jpg",
+      "country": "AS",
+      "province": "Texas",
+      "city": "Texas",
+      "address": "St. Texas 26",
+      "description": "Stand-Up Comedy Special \"Si Paling Hijrah\" oleh Fuadh Naim si influencer dakwah ini menyampaikan keresahannya mengenai banyak istri banyak anak, bahas PAUD dan ikan hias, kelakuan hawaariyyun, rezeki dari mana aja, kelakuan anak hijrah, aktivis kawin, semua orang hatinya busuk, hingga challenge aneh pengajian. Komika ini akan membawakan setiap cerita dengan ciri khasnya yang tentunya akan menghibur kamu dimana pun kamu berada.\nPERHATIAN\nSize : 395 MB\nDurasi Si Paling Hijrah : 01:24:07\nResolusi Video : HD 1280X720\nSegera lakukan download karena link akan otomatis expired dalam waktu 7 hari\nTIPS DOWNLOAD\nMasuk ke My account, lalu ke My order https://comika.id/my-account/orders/ dan klik tombol DOWNLOAD pada order produk yang sukses pembayaran (COMPLETED)\nJangan gunakan wifi yg ada limit download\nJangan gunakan software download external gratisan\nDisarankan gunakan incognito browse atau private browser Google Chrome\nPERHATIAN!\nVideo ini hanya diperuntukkan umur 18 tahun ke atas, karena mengandung kata-kata makian, sarkas, dan materi dewasa. Kebijaksanaan pembeli harap diperhatikan.\nTags\nFuadh Naim , AGUSTUS 2023\nTalent\nFuadh Naim",
+      "startAt": "2023-08-30T16:00",
+      "price": 0,
+      "capacity": 1000,
+      "currentCapacity": 165
+    },
+    {
+      "id": "product-1691690036444",
+      "userId": "user-1691423705878",
+      "title": "",
+      "imageUrl": "",
+      "country": "",
+      "province": "",
+      "city": "",
+      "address": "",
+      "description": "",
+      "startAt": "",
+      "price": 0,
+      "capacity": 0,
+      "currentCapacity": 0
+    },
+    {
+      "id": "product-1691690309012",
+      "userId": "user-1691423705878",
+      "title": "",
+      "imageUrl": "",
+      "country": "",
+      "province": "",
+      "city": "",
+      "address": "",
+      "description": "",
+      "startAt": "",
+      "price": 0,
+      "capacity": 0,
+      "currentCapacity": 0
+    },
+    {
+      "id": "product-1691715350736",
+      "userId": "user-1691423705878",
+      "title": "",
+      "imageUrl": "",
+      "country": "",
+      "province": "",
+      "city": "",
+      "address": "",
+      "description": "",
+      "startAt": "",
+      "price": 0,
+      "capacity": 0,
       "currentCapacity": 0
     }
   ],
-  "transactions": [],
+  "transactions": [
+    {
+      "id": "transaction-1691682982997",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 2800000,
+      "productTotal": 28,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691682982997",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691682982997"
+    },
+    {
+      "id": "transaction-1691683048102",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 1500000,
+      "productTotal": 15,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691683048102",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691683048102"
+    },
+    {
+      "id": "transaction-1691683051122",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 700000,
+      "productTotal": 7,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691683051122",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691683051122"
+    },
+    {
+      "id": "transaction-1691683053841",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 100000,
+      "productTotal": 1,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691683053841",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691683053841"
+    },
+    {
+      "id": "transaction-1691683055183",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 100000,
+      "productTotal": 1,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691683055183",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691683055183"
+    },
+    {
+      "id": "transaction-1691683260384",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 400000,
+      "productTotal": 4,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691683260384",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691683260384"
+    },
+    {
+      "id": "transaction-1691683516818",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 200000,
+      "productTotal": 2,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691683516818",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691683516818"
+    },
+    {
+      "id": "transaction-1691683677789",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 400000,
+      "productTotal": 4,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691683677789",
+      "isPaid": true,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691683677789"
+    },
+    {
+      "id": "transaction-1691683698191",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 400000,
+      "productTotal": 4,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691683698191",
+      "isPaid": true,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691683698191"
+    },
+    {
+      "id": "transaction-1691683870790",
+      "userId": "user-1691423705878",
+      "productId": "product-1691649832950",
+      "price": 0,
+      "priceTotal": 0,
+      "productTotal": 2,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691683870790",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691683870790"
+    },
+    {
+      "id": "transaction-1691683993690",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 800000,
+      "productTotal": 8,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691683993690",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691683993690"
+    },
+    {
+      "id": "transaction-1691684022169",
+      "userId": "user-1691423705878",
+      "productId": "product-1691649832950",
+      "price": 0,
+      "priceTotal": 0,
+      "productTotal": 8,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691684022169",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691684022169"
+    },
+    {
+      "id": "transaction-1691684323375",
+      "userId": "user-1691423705878",
+      "productId": "product-1691649832950",
+      "price": 0,
+      "priceTotal": 0,
+      "productTotal": 22,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691684323375",
+      "isPaid": false,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691684323375"
+    },
+    {
+      "id": "transaction-1691684492278",
+      "userId": "user-1691423705878",
+      "productId": "product-1691649832950",
+      "price": 0,
+      "priceTotal": 0,
+      "productTotal": 8,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691684492278",
+      "isPaid": true,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691684492278"
+    },
+    {
+      "id": "transaction-1691684632014",
+      "userId": "user-1691423705878",
+      "productId": "product-1691649832950",
+      "price": 0,
+      "priceTotal": 0,
+      "productTotal": 35,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691684632014",
+      "isPaid": true,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691684632014"
+    },
+    {
+      "id": "transaction-1691684653644",
+      "userId": "user-1691423705878",
+      "productId": "product-1691649832950",
+      "price": 0,
+      "priceTotal": 0,
+      "productTotal": 47,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691684653644",
+      "isPaid": true,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691684653644"
+    },
+    {
+      "id": "transaction-1691684756428",
+      "userId": "user-1691423705878",
+      "productId": "product-1691649832950",
+      "price": 0,
+      "priceTotal": 0,
+      "productTotal": 45,
+      "usedPromotionPoint": 0,
+      "usedReferralPoint": 0,
+      "createdAt": "1691684756428",
+      "isPaid": true,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691684756428"
+    },
+    {
+      "id": "transaction-1691684806922",
+      "userId": "user-1691423705878",
+      "productId": "product-1691422349211",
+      "price": 100000,
+      "priceTotal": 799000,
+      "productTotal": 8,
+      "usedPromotionPoint": 1000,
+      "usedReferralPoint": 0,
+      "createdAt": "1691684806922",
+      "isPaid": true,
+      "paymentLink": "http://192.168.0.103:3000/pay/transaction-1691684806922"
+    }
+  ],
   "promotions": [
     {
       "id": "promotion-1691460336089",
@@ -66,7 +353,7 @@
       "voucherCode": "BELANJA_1000",
       "promotionPoint": 1000,
       "capacity": 20,
-      "currentCapacity": 1
+      "currentCapacity": 2
     },
     {
       "id": "promotion-1691594112063",
@@ -74,6 +361,46 @@
       "voucherCode": "OKE20",
       "promotionPoint": 20000,
       "capacity": 20,
+      "currentCapacity": 0
+    },
+    {
+      "id": "promotion-1691658224534",
+      "productId": "product-1691422349211",
+      "voucherCode": "TEST",
+      "promotionPoint": 10000,
+      "capacity": 100,
+      "currentCapacity": 1
+    },
+    {
+      "id": "promotion-1691658409704",
+      "productId": "product-1691422349211",
+      "voucherCode": "TEST10",
+      "promotionPoint": 20000,
+      "capacity": 50,
+      "currentCapacity": 0
+    },
+    {
+      "id": "promotion-1691667830312",
+      "productId": "product-1691422349211",
+      "voucherCode": "test",
+      "promotionPoint": 1000,
+      "capacity": 10,
+      "currentCapacity": 0
+    },
+    {
+      "id": "promotion-1691673079222",
+      "productId": "product-1691422349211",
+      "voucherCode": "VOUCHER",
+      "promotionPoint": 100000,
+      "capacity": 20,
+      "currentCapacity": 1
+    },
+    {
+      "id": "promotion-1691715355192",
+      "productId": "product-1691715350736",
+      "voucherCode": "",
+      "promotionPoint": 0,
+      "capacity": 0,
       "currentCapacity": 0
     }
   ],

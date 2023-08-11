@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
 import authUserReducer from './authUser/reducer';
 import isPreloadReducer from './isPreload/reducer';
 import usersReducer from './users/reducer';
@@ -17,6 +18,7 @@ const store = configureStore({
     productReviews: productReviewsReducer,
     isCreateProductButtonCloseOnClick: isCreateProductButtonCloseOnClickReducer,
   },
+  middleware: [thunk],
 });
 
 export default store;

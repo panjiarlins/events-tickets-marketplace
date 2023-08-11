@@ -10,10 +10,10 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+html body {
   color: white;
   background-color: #0c0e17;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .navbar-container {

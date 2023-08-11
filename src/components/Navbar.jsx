@@ -14,6 +14,7 @@ const Navbar = ({ keyword, onSearch }) => {
   const navigate = useNavigate();
   const { pathname: currentPath } = useLocation();
   const [isHumbergerMenuOnClick, setIsHumbergerMenuOnClick] = useState(false);
+  // const [isCreateProductButtonOnClick, setIsCreateProductButtonOnClick] = useState(true)
 
   return (
     <>
@@ -63,6 +64,15 @@ const Navbar = ({ keyword, onSearch }) => {
           >
             Semua Event
           </Link>
+          <button
+            onClick={() => navigate('/me')}
+            className={
+              'text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]' +
+              (authUser ? ' block' : ' hidden')
+            }
+          >
+            My Activity
+          </button>
           <button
             onClick={() =>
               dispatch(isCreateProductButtonCloseOnClickActionCreator())

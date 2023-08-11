@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
-import { Login } from "./pages/login";
-import { Register } from "./pages/register";
-import { Navigate, Route, Routes, useSearchParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { asyncPreloadProcess } from "./states/isPreload/action";
-import DashboardPage from "./pages/DashboardPage";
-import { Navbar } from "./components/Navbar";
-import { DetailPage } from "./pages/tempDetailPage";
-import PaymentPage from "./pages/PaymentPage";
-import { Profile } from "./pages/profile";
+import React, { useEffect } from 'react';
+import { Login } from './pages/login';
+import { Register } from './pages/register';
+import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncPreloadProcess } from './states/isPreload/action';
+import DashboardPage from './pages/DashboardPage';
+import { Navbar } from './components/Navbar';
+import PaymentPage from './pages/PaymentPage';
+import DetailPage from './pages/DetailPage';
+import MePage from './pages/MePage';
+import { Profile } from './pages/profile';
 
 const App = () => {
   const authUser = useSelector((states) => states.authUser);
@@ -35,19 +36,20 @@ const App = () => {
       <>
         <Navbar
           onSearch={onSearchHandler}
-          keyword={searchParams.get("city") || ""}
+          keyword={searchParams.get('city') || ''}
         />
         <Routes>
-          <Route path="/pay/:transactionId" element={<PaymentPage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/products/:productId" element={<DetailPage />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/me' element={<MePage />} />
+          <Route path='/pay/:transactionId' element={<PaymentPage />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/products/:productId' element={<DetailPage />} />
           <Route
-            path="/dashboard"
-            element={<DashboardPage keyword={searchParams.get("city") || ""} />}
+            path='/dashboard'
+            element={<DashboardPage keyword={searchParams.get('city') || ''} />}
           />
-          <Route path="*" element={<Navigate to={"/dashboard"} />} />
+          <Route path='*' element={<Navigate to={'/dashboard'} />} />
         </Routes>
       </>
     );
@@ -57,16 +59,17 @@ const App = () => {
     <>
       <Navbar
         onSearch={onSearchHandler}
-        keyword={searchParams.get("city") || ""}
+        keyword={searchParams.get('city') || ''}
       />
       <Routes>
-        <Route path="/pay/:transactionId" element={<PaymentPage />} />
-        <Route path="/products/:productId" element={<DetailPage />} />
+        <Route path='/me' element={<MePage />} />
+        <Route path='/pay/:transactionId' element={<PaymentPage />} />
+        <Route path='/products/:productId' element={<DetailPage />} />
         <Route
-          path="/dashboard"
-          element={<DashboardPage keyword={searchParams.get("city") || ""} />}
+          path='/dashboard'
+          element={<DashboardPage keyword={searchParams.get('city') || ''} />}
         />
-        <Route path="*" element={<Navigate to={"/dashboard"} />} />
+        <Route path='*' element={<Navigate to={'/dashboard'} />} />
       </Routes>
     </>
   );

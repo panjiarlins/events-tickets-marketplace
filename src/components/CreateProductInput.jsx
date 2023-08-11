@@ -68,7 +68,7 @@ const CreateProductInput = () => {
             return (
               <div key={value} className='flex'>
                 <div className='bg-white text-slate-700 font-medium rounded-l-full py-[0.5vw] md:py-[0.5rem] px-[4vw] md:px-[2rem] text-[2.5vw] md:text-[1em]'>
-                  {value} :
+                  {value}:
                 </div>
                 <input
                   value={createProductInput[key]}

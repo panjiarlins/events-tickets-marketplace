@@ -382,8 +382,8 @@ const api = (() => {
       if (usedReferralPoint > 0) {
         await _onUsedReferralPoint({
           userId,
-          referralPoint,
-          usedReferralPoint,
+          referralPoint: Number(referralPoint),
+          usedReferralPoint: Number(usedReferralPoint),
         });
       }
 
@@ -391,7 +391,10 @@ const api = (() => {
         data: productData,
         error,
         message,
-      } = await _increaseProductCurrentCapacity({ productId, productTotal });
+      } = await _increaseProductCurrentCapacity({
+        productId,
+        productTotal: Number(productTotal),
+      });
       if (error) {
         return { data: null, error, message };
       }
@@ -410,7 +413,7 @@ const api = (() => {
         usedPromotionPoint: Number(usedPromotionPoint),
         usedReferralPoint: Number(usedReferralPoint),
         createdAt: dateTime,
-        isPaid: false,
+        isPaid: productData.price === 0 ? true : false,
         paymentLink: `${web_host}/pay/transaction-${dateTime}`,
       });
       return { data, error: false, message: 'success' };
