@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { asyncReceiveProducts } from '../states/products/action';
+import {
+  asyncDeleteProduct,
+  asyncReceiveProducts,
+} from '../states/products/action';
 import CreateVoucherProductInput from '../components/CreateVoucherProductInput';
 import BuyProductInput from '../components/BuyProductInput';
 import RatingAndReviewPage from './ratingreview';
+import { IconContext } from 'react-icons';
+import { MdDelete } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 const DetailPage = () => {
   const authUser = useSelector((states) => states.authUser);
   const products = useSelector((states) => states.products);
   const { productId } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [productDetail, setProductDetail] = useState(null);
   const [isModalCreateVoucherProductOpen, setIsModalCreateVoucherProductOpen] =
@@ -52,16 +59,27 @@ const DetailPage = () => {
             {(() => {
               if (authUser && authUser.id === productDetail.userId) {
                 return (
-                  <button
-                    onClick={() =>
-                      setIsModalCreateVoucherProductOpen(
-                        !isModalCreateVoucherProductOpen
-                      )
-                    }
-                    className=' mt-4 ml-4 bg-[#00ABF0] text-white font-sans cursor-pointer py-1 px-4 font-bold  border-transparent rounded-md'
-                  >
-                    Create Voucher
-                  </button>
+                  <div className='flex justify-center items-center gap-4'>
+                    <button
+                      onClick={() =>
+                        setIsModalCreateVoucherProductOpen(
+                          !isModalCreateVoucherProductOpen
+                        )
+                      }
+                      className=' mt-4 ml-4 bg-[#00ABF0] text-white font-sans cursor-pointer py-1 px-4 font-bold  border-transparent rounded-md'
+                    >
+                      Create Voucher
+                    </button>
+                    <IconContext.Provider value={{ size: '20%', color: 'red' }}>
+                      <MdDelete
+                        onClick={() => {
+                          dispatch(asyncDeleteProduct(productId));
+                          navigate('/dashboard');
+                        }}
+                        className='cursor-pointer'
+                      />
+                    </IconContext.Provider>
+                  </div>
                 );
               } else if (
                 authUser &&

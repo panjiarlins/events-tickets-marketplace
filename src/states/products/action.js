@@ -115,7 +115,7 @@ function asyncEditProduct(productId, productDetail) {
 function asyncDeleteProduct(productId) {
   return async (dispatch) => {
     try {
-      const { error, message } = await api.deleteProduct(productId);
+      const { error, message } = await api.deleteProduct({ productId });
       if (!error) {
         dispatch(deleteProductActionCreator(productId));
         return;
