@@ -56,6 +56,10 @@ const DetailPage = () => {
                 ? `Rp ${productDetail.price.toLocaleString('id-ID')}`
                 : 'FREE'}
             </h2>
+            <div>
+              Product capacity: {productDetail.currentCapacity}/
+              {productDetail.capacity}
+            </div>
             {(() => {
               if (authUser && authUser.id === productDetail.userId) {
                 return (
