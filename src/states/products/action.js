@@ -3,6 +3,7 @@ import api from '../../utils/api';
 const ActionType = {
   RECEIVE_PRODUCTS: 'RECEIVE_PRODUCTS',
   CREATE_PRODUCT: 'CREATE_PRODUCT',
+  INCREASE_PRODUCT_CURRENT_CAPACITY: 'INCREASE_PRODUCT_CURRENT_CAPACITY',
   EDIT_PRODUCT: 'EDIT_PRODUCT',
   DELETE_PRODUCT: 'DELETE_PRODUCT',
 };
@@ -21,6 +22,16 @@ function createProductActionCreator(product) {
     type: ActionType.CREATE_PRODUCT,
     payload: {
       product,
+    },
+  };
+}
+
+function increaseProductCurrentCapacityActionCreator(productId, productTotal) {
+  return {
+    type: ActionType.INCREASE_PRODUCT_CURRENT_CAPACITY,
+    payload: {
+      productId,
+      productTotal,
     },
   };
 }
@@ -58,9 +69,8 @@ function asyncCreateProduct({
   userId,
   title,
   imageUrl,
-  category,
   country,
-  provice,
+  province,
   city,
   address,
   description,
@@ -70,13 +80,12 @@ function asyncCreateProduct({
 }) {
   return async (dispatch) => {
     try {
-      const { data: product } = await api.createProduct({
+      const { data: product, error } = await api.createProduct({
         userId,
         title,
         imageUrl,
-        category,
         country,
-        provice,
+        province,
         city,
         address,
         description,
@@ -85,6 +94,7 @@ function asyncCreateProduct({
         capacity,
       });
       dispatch(createProductActionCreator(product));
+      return { error };
     } catch (error) {
       console.log(error);
     }
@@ -105,7 +115,7 @@ function asyncEditProduct(productId, productDetail) {
 function asyncDeleteProduct(productId) {
   return async (dispatch) => {
     try {
-      const { error, message } = await api.deleteProduct(productId);
+      const { error, message } = await api.deleteProduct({ productId });
       if (!error) {
         dispatch(deleteProductActionCreator(productId));
         return;
@@ -121,6 +131,7 @@ export {
   ActionType,
   receiveProductsActionCreator,
   createProductActionCreator,
+  increaseProductCurrentCapacityActionCreator,
   editProductActionCreator,
   deleteProductActionCreator,
   asyncReceiveProducts,

@@ -1,34 +1,41 @@
-const Profile = () => {
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+const UserProfile = () => {
+  const authUser = useSelector((states) => states.authUser);
+
   return (
     <div>
-      <div className="text-[#25BAEF] text-center">
-        <h1 className="text-2xl font-extrabold py-10">My Account</h1>
+      <div className='text-[#25BAEF] text-center'>
+        <h1 className='text-2xl font-extrabold py-10'>My Account</h1>
       </div>
 
-      <div className="container max-w-[800px] max-h-[600px] bg-white mx-auto py-8 rounded-lg">
-        <div className="p-4 border rounded-lg shadow-md">
-          <h2 className="text-xl text-black font-serif mb-4">
-            Contact Information
+      <div className='container max-w-[800px] max-h-[600px] bg-white mx-auto py-8 rounded-lg'>
+        <div className='p-4 border rounded-lg shadow-md'>
+          <h2 className='text-xl text-black font-serif mb-4'>
+            User Information
           </h2>
-          <div className="grid grid-cols-1 gap-4">
+          <div className='grid grid-cols-1 gap-4'>
             <div>
-              <label className="text-black font-sans mb-2">
-                Fullname: <span className="ml-[80px]">Fullname</span>
+              <label className='text-black font-sans mb-2'>
+                Fullname: <span className='ml-[80px]'>{authUser.fullName}</span>
               </label>
             </div>
             <div>
-              <label className="font-sans text-black mb-2">
-                Email: <span className="ml-[106px]">@mail.com</span>
+              <label className='font-sans text-black mb-2'>
+                Email: <span className='ml-[106px]'>{authUser.email}</span>
               </label>
             </div>
             <div>
-              <label className="font-sans text-black mb-2">
-                Referral Code: <span className="ml-[48px]">123ASD</span>
+              <label className='font-sans text-black mb-2'>
+                Referral Code:{' '}
+                <span className='ml-[48px]'>{authUser.referralCode}</span>
               </label>
             </div>
             <div>
-              <label className="font-sans text-black mb-2">
-                Referral Point: <span className="ml-[48px]">50000</span>
+              <label className='font-sans text-black mb-2'>
+                Referral Point:{' '}
+                <span className='ml-[48px]'>{authUser.referralPoint}</span>
               </label>
             </div>
           </div>
@@ -68,4 +75,4 @@ const Profile = () => {
   );
 };
 
-export { Profile };
+export default UserProfile;

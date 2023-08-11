@@ -24,12 +24,19 @@ function asyncReceiveUsers() {
   };
 }
 
-function asyncRegisterUser({ fullName, email, password }) {
+function asyncRegisterUser({ fullName, email, password, referralCode }) {
   return async () => {
     try {
-      await api.register({ fullName, email, password });
+      const response = await api.register({
+        fullName,
+        email,
+        password,
+        referralCode,
+      });
+      return response;
     } catch (error) {
       console.log(error);
+      return { data: null, error: true, message: error };
     }
   };
 }
