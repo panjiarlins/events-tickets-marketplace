@@ -146,22 +146,25 @@ const BuyProductInput = ({
           );
         })()}
 
-        <div className='bg-blue-600 text-white px-4 py-2'>
-          <h2 className='text-2xl font-bold text-center'>Invoice</h2>
-          <div className='font-sans'>
-            <p>Discount from voucher code: -{usedPromotionPoint}</p>
-            <p>Discount from referral point: -{usedReferralPoint}</p>
-            <p className='mb-6'>
-              Price:{productDetail.price} x {productTotal}
-            </p>
-            <p>
-              Total:{' '}
-              {productDetail.price * productTotal -
-                usedPromotionPoint -
-                usedReferralPoint}
-            </p>
+        {!currentTransaction && (
+          <div className='bg-blue-600 text-white px-4 py-2'>
+            <h2 className='text-2xl font-bold text-center'>Invoice</h2>
+            <div className='font-sans'>
+              <p>Discount from voucher code: -{usedPromotionPoint}</p>
+              <p>Discount from referral point: -{usedReferralPoint}</p>
+              <p className='mb-6'>
+                Price:{productDetail.price} x {productTotal}
+              </p>
+              <p>
+                Total:{' '}
+                {productDetail.price * productTotal -
+                  usedPromotionPoint -
+                  usedReferralPoint}
+              </p>
+            </div>
           </div>
-        </div>
+        )}
+
         {!currentTransaction && (
           <div className='flex bg-blue-600 justify-end p-4 gap-2'>
             <div className='flex  justify-center p-4 gap-2'>
