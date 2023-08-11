@@ -10,6 +10,7 @@ import PaymentPage from './pages/PaymentPage';
 import DetailPage from './pages/DetailPage';
 import MePage from './pages/MePage';
 import { Profile } from './pages/profile';
+import Footer from './components/Footer';
 
 const App = () => {
   const authUser = useSelector((states) => states.authUser);
@@ -71,6 +72,7 @@ const App = () => {
         />
         <Route path='*' element={<Navigate to={'/dashboard'} />} />
       </Routes>
+      <Footer />
     </>
   );
 };
