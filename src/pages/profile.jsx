@@ -1,4 +1,4 @@
-const Profile = () => {
+function Profile() {
   return (
     <div>
       <div className="text-[#25BAEF] text-center">
@@ -13,22 +13,30 @@ const Profile = () => {
           <div className="grid grid-cols-1 gap-4">
             <div>
               <label className="text-black font-sans mb-2">
-                Fullname: <span className="ml-[80px]">Fullname</span>
+                Fullname:
+                {' '}
+                <span className="ml-[80px]">Fullname</span>
               </label>
             </div>
             <div>
               <label className="font-sans text-black mb-2">
-                Email: <span className="ml-[106px]">@mail.com</span>
+                Email:
+                {' '}
+                <span className="ml-[106px]">@mail.com</span>
               </label>
             </div>
             <div>
               <label className="font-sans text-black mb-2">
-                Referral Code: <span className="ml-[48px]">123ASD</span>
+                Referral Code:
+                {' '}
+                <span className="ml-[48px]">123ASD</span>
               </label>
             </div>
             <div>
               <label className="font-sans text-black mb-2">
-                Referral Point: <span className="ml-[48px]">50000</span>
+                Referral Point:
+                {' '}
+                <span className="ml-[48px]">50000</span>
               </label>
             </div>
           </div>
@@ -66,6 +74,6 @@ const Profile = () => {
       </div>
     </div>
   );
-};
+}
 
 export { Profile };

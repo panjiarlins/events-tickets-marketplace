@@ -1,10 +1,10 @@
-import { axios_api, web_host } from '../api/axios_api';
+import { axiosAPI, webHost } from '../api/axiosAPI';
 
 const api = (() => {
   function putAuthUserLocalStorage(authUser) {
     localStorage.setItem(
       'authUser',
-      JSON.stringify({ id: authUser.id, fullName: authUser.fullName })
+      JSON.stringify({ id: authUser.id, fullName: authUser.fullName }),
     );
   }
 
@@ -14,7 +14,7 @@ const api = (() => {
 
   async function _getUserByEmail({ email }) {
     try {
-      const { data } = await axios_api.get('/users', {
+      const { data } = await axiosAPI.get('/users', {
         params: {
           email: email.trim(),
         },
@@ -27,7 +27,7 @@ const api = (() => {
 
   async function _getUserByReferralCode({ referralCode }) {
     try {
-      const { data } = await axios_api.get('/users', {
+      const { data } = await axiosAPI.get('/users', {
         params: {
           referralCode: referralCode.trim(),
         },
@@ -40,7 +40,7 @@ const api = (() => {
 
   async function _addReferralPoint({ userId, value, currentValue }) {
     try {
-      await axios_api.patch(`/users/${userId}`, {
+      await axiosAPI.patch(`/users/${userId}`, {
         referralPoint: currentValue + value,
       });
     } catch (error) {
@@ -48,7 +48,9 @@ const api = (() => {
     }
   }
 
-  async function register({ fullName, email, password, referralCode }) {
+  async function register({
+    fullName, email, password, referralCode,
+  }) {
     try {
       // email validation
       const { data: emailData } = await _getUserByEmail({ email });
@@ -82,7 +84,7 @@ const api = (() => {
       }
 
       // Post
-      const { data } = await axios_api.post('/users', {
+      const { data } = await axiosAPI.post('/users', {
         id: `user-${+new Date()}`,
         fullName,
         email,
@@ -104,7 +106,7 @@ const api = (() => {
 
   async function login({ email, password }) {
     try {
-      const { data } = await axios_api.get('/users', {
+      const { data } = await axiosAPI.get('/users', {
         params: {
           email: email.trim(),
           password: password.trim(),
@@ -124,8 +126,8 @@ const api = (() => {
 
   async function getOwnProfile() {
     try {
-      const { data } = await axios_api.get(
-        `/users/${_getAuthUserLocalStorage().id}`
+      const { data } = await axiosAPI.get(
+        `/users/${_getAuthUserLocalStorage().id}`,
       );
 
       if (!Object.keys(data).length) {
@@ -141,7 +143,7 @@ const api = (() => {
 
   async function getAllUsers() {
     try {
-      const { data } = await axios_api.get('/users');
+      const { data } = await axiosAPI.get('/users');
       return { data, error: false, message: 'success' };
     } catch (error) {
       return { data: null, error: true, message: error };
@@ -150,7 +152,7 @@ const api = (() => {
 
   async function getAllProducts() {
     try {
-      const { data } = await axios_api.get('/products');
+      const { data } = await axiosAPI.get('/products');
       return { data, error: false, message: 'success' };
     } catch (error) {
       console.log(error);
@@ -160,7 +162,7 @@ const api = (() => {
 
   async function getProductDetail(productId) {
     try {
-      const { data } = await axios_api.get(`/products/${productId}`);
+      const { data } = await axiosAPI.get(`/products/${productId}`);
       return { data, error: false, message: 'success' };
     } catch (error) {
       console.log(error);
@@ -182,7 +184,7 @@ const api = (() => {
     capacity,
   }) {
     try {
-      const { data } = await axios_api.post('/products', {
+      const { data } = await axiosAPI.post('/products', {
         id: `product-${+new Date()}`,
         userId,
         title,
@@ -206,7 +208,7 @@ const api = (() => {
 
   async function editProduct({ productId, productDetail = {} }) {
     try {
-      const { data } = await axios_api.patch(`/products/${productId}`, {
+      const { data } = await axiosAPI.patch(`/products/${productId}`, {
         ...productDetail,
       });
       return { data, error: false, message: 'success' };
@@ -218,7 +220,7 @@ const api = (() => {
 
   async function deleteProduct({ productId }) {
     try {
-      const { data } = await axios_api.delete(`/products/${productId}`);
+      const { data } = await axiosAPI.delete(`/products/${productId}`);
       return { data, error: false, message: 'success' };
     } catch (error) {
       console.log(error);
@@ -234,9 +236,9 @@ const api = (() => {
   }) {
     try {
       // Voucher code validation
-      const { data: voucherCodeValidationData } = await axios_api.get(
+      const { data: voucherCodeValidationData } = await axiosAPI.get(
         '/promotions',
-        { params: { productId, voucherCode: voucherCode.trim() } }
+        { params: { productId, voucherCode: voucherCode.trim() } },
       );
       if (voucherCodeValidationData.length) {
         return {
@@ -247,7 +249,7 @@ const api = (() => {
       }
 
       // Post
-      const { data } = await axios_api.post('/promotions', {
+      const { data } = await axiosAPI.post('/promotions', {
         id: `promotion-${+new Date()}`,
         productId,
         voucherCode,
@@ -264,7 +266,7 @@ const api = (() => {
 
   async function getVoucherCodeForTransaction({ productId, voucherCode }) {
     try {
-      const { data } = await axios_api.get('/promotions', {
+      const { data } = await axiosAPI.get('/promotions', {
         params: { productId, voucherCode: voucherCode.trim() },
       });
       if (!data.length) {
@@ -293,17 +295,16 @@ const api = (() => {
   async function _onUsedVoucherCode({ productId, voucherCode }) {
     try {
       // Voucher code validation
-      const { data: voucherCodeValidationData } =
-        await getVoucherCodeForTransaction({
-          productId,
-          voucherCode,
-        });
+      const { data: voucherCodeValidationData } = await getVoucherCodeForTransaction({
+        productId,
+        voucherCode,
+      });
 
-      const { data } = await axios_api.patch(
+      const { data } = await axiosAPI.patch(
         `/promotions/${voucherCodeValidationData.id}`,
         {
           currentCapacity: voucherCodeValidationData.currentCapacity + 1,
-        }
+        },
       );
 
       return { data, error: false, message: 'success' };
@@ -319,7 +320,7 @@ const api = (() => {
     usedReferralPoint,
   }) {
     try {
-      const { data } = await axios_api.patch(`/users/${userId}`, {
+      const { data } = await axiosAPI.patch(`/users/${userId}`, {
         referralPoint: referralPoint - usedReferralPoint,
       });
 
@@ -345,11 +346,11 @@ const api = (() => {
         return { data: null, error: true, message: 'Product is sold out!' };
       }
 
-      const { data, error, message } = await axios_api.patch(
+      const { data, error, message } = await axiosAPI.patch(
         `/products/${productId}`,
         {
           currentCapacity: productData.currentCapacity + productTotal,
-        }
+        },
       );
       if (error) {
         return { data: null, error: true, message };
@@ -400,21 +401,21 @@ const api = (() => {
       }
 
       const dateTime = String(+new Date());
-      const { data } = await axios_api.post('/transactions', {
+      const { data } = await axiosAPI.post('/transactions', {
         id: `transaction-${dateTime}`,
         userId,
         productId,
         price: productData.price,
         priceTotal:
-          productData.price * productTotal -
-          usedPromotionPoint -
-          usedReferralPoint,
+          productData.price * productTotal
+          - usedPromotionPoint
+          - usedReferralPoint,
         productTotal: Number(productTotal),
         usedPromotionPoint: Number(usedPromotionPoint),
         usedReferralPoint: Number(usedReferralPoint),
         createdAt: dateTime,
-        isPaid: productData.price === 0 ? true : false,
-        paymentLink: `${web_host}/pay/transaction-${dateTime}`,
+        isPaid: productData.price === 0,
+        paymentLink: `${webHost}/pay/transaction-${dateTime}`,
       });
       return { data, error: false, message: 'success' };
     } catch (error) {
@@ -425,7 +426,7 @@ const api = (() => {
 
   async function getUserTransactions({ userId }) {
     try {
-      const { data } = await axios_api.get('/transactions', {
+      const { data } = await axiosAPI.get('/transactions', {
         params: {
           userId,
         },
@@ -439,7 +440,7 @@ const api = (() => {
 
   async function payTransaction({ transactionId }) {
     try {
-      const { data } = await axios_api.patch(`/transactions/${transactionId}`, {
+      const { data } = await axiosAPI.patch(`/transactions/${transactionId}`, {
         isPaid: true,
       });
       return { data, error: false, message: 'success' };
@@ -451,7 +452,7 @@ const api = (() => {
 
   async function getProductReviews({ productId }) {
     try {
-      const { data } = await axios_api.get('/productReviews', {
+      const { data } = await axiosAPI.get('/productReviews', {
         params: { productId },
       });
       return { data, error: false, message: 'success' };
@@ -461,10 +462,12 @@ const api = (() => {
     }
   }
 
-  async function createProductReview({ userId, productId, comment, rating }) {
+  async function createProductReview({
+    userId, productId, comment, rating,
+  }) {
     try {
       // userTransaction validation
-      const { data: userTransactions } = await axios_api.get('/transactions', {
+      const { data: userTransactions } = await axiosAPI.get('/transactions', {
         params: { userId, productId },
       });
       if (!userTransactions.length) {
@@ -476,7 +479,7 @@ const api = (() => {
       }
 
       // userReviews validation
-      const { data: userReviews } = axios_api.get('/productReviews', {
+      const { data: userReviews } = axiosAPI.get('/productReviews', {
         params: { userId, productId },
       });
 
@@ -489,7 +492,7 @@ const api = (() => {
       }
 
       // Post
-      const { data } = await axios_api.post('/productReviews', {
+      const { data } = await axiosAPI.post('/productReviews', {
         userId,
         productId,
         comment,

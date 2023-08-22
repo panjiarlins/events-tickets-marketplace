@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../utils/api';
 
-const PaymentPage = () => {
+function PaymentPage() {
   const { transactionId } = useParams();
   const [isPaid, setIsPaid] = useState(false);
 
@@ -17,15 +17,11 @@ const PaymentPage = () => {
     });
   }, [transactionId]);
 
-  return (
-    <>
-      {isPaid ? (
-        <div className='text-center'>Pembayaran Berhasil!</div>
-      ) : (
-        <div className='text-center'>Menunggu Pembayaran ....</div>
-      )}
-    </>
-  );
-};
+  return isPaid
+    ? <div className="text-center">Pembayaran Berhasil!</div>
+    : (
+      <div className="text-center">Menunggu Pembayaran ....</div>
+    );
+}
 
 export default PaymentPage;

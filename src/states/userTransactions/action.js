@@ -57,7 +57,7 @@ function asyncCreateUserTransaction({
       });
       dispatch(createUserTransactionActionCreator(userTransaction));
       dispatch(
-        increaseProductCurrentCapacityActionCreator(productId, productTotal)
+        increaseProductCurrentCapacityActionCreator(productId, productTotal),
       );
 
       return { data: userTransaction, error: false, message: 'success' };

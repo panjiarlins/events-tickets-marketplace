@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import { useEffect } from 'react';
+import {
+  Tabs, TabList, TabPanels, Tab, TabPanel,
+} from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
 import UserProfile from '../components/UserProfile';
 import UserTransactionsList from '../components/UserTransactionsList';
-import { useDispatch, useSelector } from 'react-redux';
 import { asyncReceviveUserTransactions } from '../states/userTransactions/action';
 import UserProductsList from '../components/UserProductsList';
 import { asyncReceiveProducts } from '../states/products/action';
 
-const MePage = () => {
+function MePage() {
   const authUser = useSelector((states) => states.authUser);
   const dispatch = useDispatch();
 
@@ -41,6 +43,6 @@ const MePage = () => {
       </TabPanels>
     </Tabs>
   );
-};
+}
 
 export default MePage;
