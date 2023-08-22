@@ -33,7 +33,7 @@ function productsReducer(products = [], action = {}) {
 
     case ActionType.DELETE_PRODUCT:
       return products.filter(
-        (product) => product.id !== action.payload.productId
+        (product) => product.id !== action.payload.productId,
       );
 
     default:

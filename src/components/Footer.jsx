@@ -1,7 +1,5 @@
-import React from 'react';
-
-const Footer = () => {
-  return <footer className='w-full h-[200px]'></footer>;
-};
+function Footer() {
+  return <footer className="w-full h-[200px]" />;
+}
 
 export default Footer;

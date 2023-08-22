@@ -2,7 +2,7 @@ import { ActionType } from './action';
 
 function isCreateProductButtonCloseOnClickReducer(
   isCreateProductButtonCloseOnClick = true,
-  action = {}
+  action = {},
 ) {
   switch (action.type) {
     case ActionType.TOGGLE:

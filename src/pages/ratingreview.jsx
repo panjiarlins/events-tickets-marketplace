@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useState } from 'react';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 import * as Yup from 'yup';
 import { FaStar } from 'react-icons/fa';
 import { Button } from '@chakra-ui/react';
@@ -20,7 +22,7 @@ const validationSchema = Yup.object({
     .required('Review is required'),
 });
 
-const RatingAndReviewPage = () => {
+function RatingAndReviewPage() {
   const [reviewsList, setReviewsList] = useState([1, 2, 3, 4, 5]);
 
   const handleFormSubmit = (values, { resetForm }) => {
@@ -55,26 +57,26 @@ const RatingAndReviewPage = () => {
                     ))}
                   </div>
                   <ErrorMessage
-                    name='rating'
-                    component='div'
-                    className='error'
+                    name="rating"
+                    component="div"
+                    className="error"
                   />
                 </div>
                 <div>
                   <Field
-                    as='textarea'
-                    className='text-black'
-                    name='review'
-                    rows='4'
-                    cols='50'
+                    as="textarea"
+                    className="text-black"
+                    name="review"
+                    rows="4"
+                    cols="50"
                   />
                   <ErrorMessage
-                    name='review'
-                    component='div'
-                    className='error'
+                    name="review"
+                    component="div"
+                    className="error"
                   />
                 </div>
-                <Button colorScheme='blackAlpha' type='submit'>
+                <Button colorScheme="blackAlpha" type="submit">
                   Button
                 </Button>
               </Form>
@@ -85,7 +87,7 @@ const RatingAndReviewPage = () => {
           <h2>Recent Ratings and Reviews</h2>
           <ul>
             {reviewsList.map((reviewItem, index) => (
-              <li key={index}>
+              <li key={String(index) + String(reviewItem.rating)}>
                 <div>
                   Rating:
                   <div style={{ display: 'flex' }}>
@@ -107,6 +109,6 @@ const RatingAndReviewPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default RatingAndReviewPage;
