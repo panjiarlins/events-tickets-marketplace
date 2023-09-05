@@ -17,29 +17,23 @@ function UserProfile() {
           <div className="grid grid-cols-1 gap-4">
             <div>
               <label className="text-black font-sans mb-2">
-                Fullname:
-                {' '}
-                <span className="ml-[80px]">{authUser.fullName}</span>
+                Fullname: <span className="ml-[80px]">{authUser.fullName}</span>
               </label>
             </div>
             <div>
               <label className="font-sans text-black mb-2">
-                Email:
-                {' '}
-                <span className="ml-[106px]">{authUser.email}</span>
+                Email: <span className="ml-[106px]">{authUser.email}</span>
               </label>
             </div>
             <div>
               <label className="font-sans text-black mb-2">
-                Referral Code:
-                {' '}
+                Referral Code:{' '}
                 <span className="ml-[48px]">{authUser.referralCode}</span>
               </label>
             </div>
             <div>
               <label className="font-sans text-black mb-2">
-                Referral Point:
-                {' '}
+                Referral Point:{' '}
                 <span className="ml-[48px]">{authUser.referralPoint}</span>
               </label>
             </div>

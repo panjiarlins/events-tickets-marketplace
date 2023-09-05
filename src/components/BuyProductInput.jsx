@@ -32,9 +32,9 @@ function BuyProductInput({
     setUsedReferralPoint(
       authUser && productDetail
         ? Math.min(
-          authUser.referralPoint,
-          productDetail.price * productTotal - usedPromotionPoint,
-        )
+            authUser.referralPoint,
+            productDetail.price * productTotal - usedPromotionPoint,
+          )
         : 0,
     );
   }, [authUser, productDetail, productTotal, usedPromotionPoint]);
@@ -135,7 +135,9 @@ function BuyProductInput({
                     }`}
                     step="1"
                     value={productTotal}
-                    onChange={({ target }) => setProductTotal(Number(target.value))}
+                    onChange={({ target }) =>
+                      setProductTotal(Number(target.value))
+                    }
                   />
                   <p className="text-black">{productTotal}</p>
                 </div>
@@ -148,28 +150,17 @@ function BuyProductInput({
           <div className="bg-blue-600 text-white px-4 py-2">
             <h2 className="text-2xl font-bold text-center">Invoice</h2>
             <div className="font-sans">
-              <p>
-                Discount from voucher code: -
-                {usedPromotionPoint}
-              </p>
-              <p>
-                Discount from referral point: -
-                {usedReferralPoint}
-              </p>
+              <p>Discount from voucher code: -{usedPromotionPoint}</p>
+              <p>Discount from referral point: -{usedReferralPoint}</p>
               <p className="mb-6">
                 Price:
-                {productDetail.price}
-                {' '}
-                x
-                {' '}
-                {productTotal}
+                {productDetail.price} x {productTotal}
               </p>
               <p>
-                Total:
-                {' '}
-                {productDetail.price * productTotal
-                  - usedPromotionPoint
-                  - usedReferralPoint}
+                Total:{' '}
+                {productDetail.price * productTotal -
+                  usedPromotionPoint -
+                  usedReferralPoint}
               </p>
             </div>
           </div>

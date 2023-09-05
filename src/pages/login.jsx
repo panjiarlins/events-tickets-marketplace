@@ -37,9 +37,7 @@ function Login() {
         </div>
         <div className="mt-4 grid gap-[6px] grid-cols-1">
           <label htmlFor="1" className="text-white font-semibold">
-            Email
-            {' '}
-            <span className="text-red-500">*</span>
+            Email <span className="text-red-500">*</span>
           </label>
           <input
             value={email}
@@ -51,9 +49,7 @@ function Login() {
           />
 
           <label className="text-white font-semibold">
-            Password
-            {' '}
-            <span className="text-red-500">*</span>
+            Password <span className="text-red-500">*</span>
           </label>
           <input
             value={password}
@@ -66,9 +62,7 @@ function Login() {
             Forgot Password
           </label>
           <div className="text-white font-extrabold">
-            <input type="checkbox" />
-            {' '}
-            I want to stay logged in
+            <input type="checkbox" /> I want to stay logged in
           </div>
 
           <button

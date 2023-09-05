@@ -30,9 +30,7 @@ function asyncReceiveProductReviews({ productId }) {
   };
 }
 
-function asyncCreateProductReview({
-  userId, productId, comment, rating,
-}) {
+function asyncCreateProductReview({ userId, productId, comment, rating }) {
   return async (dispatch) => {
     try {
       const { data } = await api.createProductReview({

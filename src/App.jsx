@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
-import {
-  Navigate, Route, Routes, useSearchParams,
-} from 'react-router-dom';
+import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Login } from './pages/login';
 import { Register } from './pages/register';

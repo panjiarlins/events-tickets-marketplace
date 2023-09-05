@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import {
-  Formik, Form, Field, ErrorMessage,
-} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FaStar } from 'react-icons/fa';
 import { Button } from '@chakra-ui/react';

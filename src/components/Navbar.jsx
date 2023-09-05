@@ -52,10 +52,9 @@ function Navbar({ keyword, onSearch }) {
           />
         </IconContext.Provider>
         <div
-          className={
-            `navbar-submenu${
-              isHumbergerMenuOnClick ? ' grid gap-[1vw]' : ' hidden md:grid'}`
-          }
+          className={`navbar-submenu${
+            isHumbergerMenuOnClick ? ' grid gap-[1vw]' : ' hidden md:grid'
+          }`}
         >
           {isHumbergerMenuOnClick}
           <Link
@@ -67,20 +66,20 @@ function Navbar({ keyword, onSearch }) {
           <button
             type="submit"
             onClick={() => navigate('/me')}
-            className={
-              `text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]${
-                authUser ? ' block' : ' hidden'}`
-            }
+            className={`text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]${
+              authUser ? ' block' : ' hidden'
+            }`}
           >
             My Activity
           </button>
           <button
             type="submit"
-            onClick={() => dispatch(isCreateProductButtonCloseOnClickActionCreator())}
-            className={
-              `text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]${
-                authUser ? ' block' : ' hidden'}`
+            onClick={() =>
+              dispatch(isCreateProductButtonCloseOnClickActionCreator())
             }
+            className={`text-left md:text-center text-[3.5vw] md:text-[0.8em] px-[5vw] md:px-[1rem] py-[1.5vw] md:py-[0.5rem]${
+              authUser ? ' block' : ' hidden'
+            }`}
           >
             Buat Event
           </button>

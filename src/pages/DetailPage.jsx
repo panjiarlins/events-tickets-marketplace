@@ -20,7 +20,8 @@ function DetailPage() {
   const navigate = useNavigate();
 
   const [productDetail, setProductDetail] = useState(null);
-  const [isModalCreateVoucherProductOpen, setIsModalCreateVoucherProductOpen] = useState(false);
+  const [isModalCreateVoucherProductOpen, setIsModalCreateVoucherProductOpen] =
+    useState(false);
   const [isModalBuyOpen, setIsModalBuyOpen] = useState(false);
 
   useEffect(() => {
@@ -59,10 +60,7 @@ function DetailPage() {
               {new Date(productDetail.startAt).toLocaleString('id-ID')}
             </h2>
             <div>
-              Product capacity:
-              {' '}
-              {productDetail.currentCapacity}
-              /
+              Product capacity: {productDetail.currentCapacity}/
               {productDetail.capacity}
             </div>
             {(() => {
@@ -71,9 +69,11 @@ function DetailPage() {
                   <div className="flex justify-center items-center gap-4">
                     <button
                       type="submit"
-                      onClick={() => setIsModalCreateVoucherProductOpen(
-                        !isModalCreateVoucherProductOpen,
-                      )}
+                      onClick={() =>
+                        setIsModalCreateVoucherProductOpen(
+                          !isModalCreateVoucherProductOpen,
+                        )
+                      }
                       className=" mt-4 ml-4 bg-[#00ABF0] text-white font-sans cursor-pointer py-1 px-4 font-bold  border-transparent rounded-md"
                     >
                       Create Voucher
@@ -91,9 +91,10 @@ function DetailPage() {
                     </IconContext.Provider>
                   </div>
                 );
-              } if (
-                authUser
-                && productDetail.currentCapacity < productDetail.capacity
+              }
+              if (
+                authUser &&
+                productDetail.currentCapacity < productDetail.capacity
               ) {
                 return (
                   <button
@@ -126,14 +127,17 @@ function DetailPage() {
             <CreateVoucherProductInput
               productDetail={productDetail}
               isModalCreateVoucherProductOpen={isModalCreateVoucherProductOpen}
-              toggleIsModalCreateVoucherProductOpen={() => setIsModalCreateVoucherProductOpen(
-                !isModalCreateVoucherProductOpen,
-              )}
+              toggleIsModalCreateVoucherProductOpen={() =>
+                setIsModalCreateVoucherProductOpen(
+                  !isModalCreateVoucherProductOpen,
+                )
+              }
             />
           );
-        } if (
-          authUser
-          && productDetail.currentCapacity < productDetail.capacity
+        }
+        if (
+          authUser &&
+          productDetail.currentCapacity < productDetail.capacity
         ) {
           return (
             <BuyProductInput

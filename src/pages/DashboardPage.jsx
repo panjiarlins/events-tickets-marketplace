@@ -26,13 +26,15 @@ function DashboardPage({ keyword }) {
         </div>
         <ProductsList
           products={
-              keyword && keyword.trim()
-                ? products.filter((product) => product.city
-                  .trim()
-                  .toLowerCase()
-                  .includes(keyword.trim().toLowerCase()))
-                : products
-            }
+            keyword && keyword.trim()
+              ? products.filter((product) =>
+                  product.city
+                    .trim()
+                    .toLowerCase()
+                    .includes(keyword.trim().toLowerCase()),
+                )
+              : products
+          }
         />
       </div>
     </div>
