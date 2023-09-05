@@ -28,9 +28,7 @@ function Register() {
         </div>
         <div className="mt-4 grid gap-[6px] grid-cols-1">
           <label htmlFor="1" className="text-white font-semibold">
-            Email
-            {' '}
-            <span className="text-red-500">*</span>
+            Email <span className="text-red-500">*</span>
           </label>
           <input
             value={email}
@@ -42,9 +40,7 @@ function Register() {
           />
 
           <label className="text-white font-semibold">
-            Fullname
-            {' '}
-            <span className="text-red-500">*</span>
+            Fullname <span className="text-red-500">*</span>
           </label>
           <input
             value={fullName}
@@ -55,9 +51,7 @@ function Register() {
           />
 
           <label className="text-white font-semibold">
-            Password
-            {' '}
-            <span className="text-red-500">*</span>
+            Password <span className="text-red-500">*</span>
           </label>
           <input
             value={password}
@@ -68,9 +62,7 @@ function Register() {
           />
 
           <label className="text-white font-semibold">
-            Confirm Password
-            {' '}
-            <span className="text-red-500">*</span>
+            Confirm Password <span className="text-red-500">*</span>
           </label>
           <input
             value={confirmPassword}
@@ -81,9 +73,7 @@ function Register() {
           />
 
           <label className="text-white font-semibold">
-            Referral Code
-            {' '}
-            <span className="text-red-500">*</span>
+            Referral Code <span className="text-red-500">*</span>
           </label>
           <input
             value={referralCode}
@@ -95,18 +85,23 @@ function Register() {
           <button
             className="my-2 bg-[#00ABF0] font-semibold rounded-[4px] py-1 cursor-pointer text-white"
             type="submit"
-            onClick={() => dispatch(
-              asyncRegisterUser({
-                fullName, email, password, referralCode,
-              }),
-            ).then(({ error, message }) => {
-              if (error) {
-                console.log(message);
-                alert(message);
-              } else {
-                navigate('/login');
-              }
-            })}
+            onClick={() =>
+              dispatch(
+                asyncRegisterUser({
+                  fullName,
+                  email,
+                  password,
+                  referralCode,
+                }),
+              ).then(({ error, message }) => {
+                if (error) {
+                  console.log(message);
+                  alert(message);
+                } else {
+                  navigate('/login');
+                }
+              })
+            }
           >
             Register
           </button>

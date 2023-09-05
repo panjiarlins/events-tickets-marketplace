@@ -24,9 +24,7 @@ function asyncReceiveUsers() {
   };
 }
 
-function asyncRegisterUser({
-  fullName, email, password, referralCode,
-}) {
+function asyncRegisterUser({ fullName, email, password, referralCode }) {
   return async () => {
     try {
       const response = await api.register({

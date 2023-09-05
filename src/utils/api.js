@@ -48,9 +48,7 @@ const api = (() => {
     }
   }
 
-  async function register({
-    fullName, email, password, referralCode,
-  }) {
+  async function register({ fullName, email, password, referralCode }) {
     try {
       // email validation
       const { data: emailData } = await _getUserByEmail({ email });
@@ -295,10 +293,11 @@ const api = (() => {
   async function _onUsedVoucherCode({ productId, voucherCode }) {
     try {
       // Voucher code validation
-      const { data: voucherCodeValidationData } = await getVoucherCodeForTransaction({
-        productId,
-        voucherCode,
-      });
+      const { data: voucherCodeValidationData } =
+        await getVoucherCodeForTransaction({
+          productId,
+          voucherCode,
+        });
 
       const { data } = await axiosAPI.patch(
         `/promotions/${voucherCodeValidationData.id}`,
@@ -407,9 +406,9 @@ const api = (() => {
         productId,
         price: productData.price,
         priceTotal:
-          productData.price * productTotal
-          - usedPromotionPoint
-          - usedReferralPoint,
+          productData.price * productTotal -
+          usedPromotionPoint -
+          usedReferralPoint,
         productTotal: Number(productTotal),
         usedPromotionPoint: Number(usedPromotionPoint),
         usedReferralPoint: Number(usedReferralPoint),
@@ -462,9 +461,7 @@ const api = (() => {
     }
   }
 
-  async function createProductReview({
-    userId, productId, comment, rating,
-  }) {
+  async function createProductReview({ userId, productId, comment, rating }) {
     try {
       // userTransaction validation
       const { data: userTransactions } = await axiosAPI.get('/transactions', {

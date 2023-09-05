@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
-import {
-  Tabs, TabList, TabPanels, Tab, TabPanel,
-} from '@chakra-ui/react';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import UserProfile from '../components/UserProfile';
 import UserTransactionsList from '../components/UserTransactionsList';

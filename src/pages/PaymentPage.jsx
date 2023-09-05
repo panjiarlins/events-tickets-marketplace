@@ -17,11 +17,11 @@ function PaymentPage() {
     });
   }, [transactionId]);
 
-  return isPaid
-    ? <div className="text-center">Pembayaran Berhasil!</div>
-    : (
-      <div className="text-center">Menunggu Pembayaran ....</div>
-    );
+  return isPaid ? (
+    <div className="text-center">Pembayaran Berhasil!</div>
+  ) : (
+    <div className="text-center">Menunggu Pembayaran ....</div>
+  );
 }
 
 export default PaymentPage;

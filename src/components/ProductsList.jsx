@@ -14,11 +14,7 @@ function ProductsList({ products }) {
               : 'FREE'}
           </div>
           <div className="truncate dashboard-content_cards_card_location">
-            {product.city}
-            ,
-            {product.province}
-            ,
-            {product.country}
+            {product.city},{product.province},{product.country}
           </div>
           <div className="truncate dashboard-content_cards_card_title">
             {product.title}
